@@ -1,0 +1,38 @@
+
+
+<ion-view title="Contacts"  >
+
+    <ion-content >
+        <ion-list show-delete="data.showDelete" >
+
+                <!--header delete -->
+                <ion-header-bar class="bar-positive">
+                    <div class="buttons">
+                      <button class="button button-icon icon ion-ios-minus-outline"
+                              ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
+                    </div>
+                    <h1 class="title">  </h1>
+                </ion-header-bar>
+                <!--end header delete -->
+
+            <!--blank space -->
+            <div class="item item-divider"></div>
+            <!--end blank space -->
+
+                <!--item avatar-->
+                <ion-item class="item item-avatar item-remove-animate item-button-right" ng-repeat="friend in friendslist" friend="friend">
+                      <img src={{friend.img}}>
+                      <h2>{{friend.name}}</h2>
+                      <p>{{friend.country}}, {{friend.city}} </p>
+                      <ion-delete-button class="ion-minus-circled" ng-click="deleteFriendButton(friend)"> </ion-delete-button>
+                      <button class="button button-positive icon ion-android-chat" ng-click="chatFriendButton(item)"> </button>
+                      <ion-option-button class="button button-positive icon ion-android-settings"  ng-click="editFriendButton(item)"></ion-option-button>
+
+                </ion-item>
+                <!--end item avatar-->
+
+        </ion-list>
+    </ion-content>
+
+
+</ion-view>
