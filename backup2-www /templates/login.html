@@ -1,0 +1,54 @@
+<ion-view title="Login" id="page5" class=" ">
+    <ion-content padding="true" class="has-header">
+        <form id="login-form1" class="list ">
+            <ion-list id="login-list1" class=" ">
+                <label class="item item-input " id="login-input1">
+                    <span class="input-label">Username</span>
+                    <input type="text"  ng-model="user.email" placeholder="pollo@gmail.com" >
+                </label>
+                <label class="item item-input " id="login-input2">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="user.password" placeholder="************">
+                </label>
+            </ion-list>
+            <div class="spacer" style="width: 285px; height: 114px;"></div>
+
+                <!-- validador de login -->
+                  <!--ui-sref="tabsController.notice"-->
+                  <a  id="login-button1"
+                      class=" button button-positive  button-block "
+                      ng-click="login(user)" >Log in</a>
+                <!-- end validador de login -->
+
+
+                <!-- validador de sing-up -->
+                  <a  ui-sref="signup" id="login-button2"
+                      class=" button button-positive  button-block button-clear "
+                      ng-click="modal.show()" >Or create an account</a>
+                <!-- end validador de sing-up -->
+
+        </form>
+        <div id="login-button-bar1" class=" button-bar ">
+            <!--     validador de google -->
+              <a ui-sref="tabsController.notice" id="login-button6"
+                 style="border-radius:20px 20px 20px 20px;"
+                 class=" button button-positive  icon ion-social-googleplus "
+                 ng-click="loginWithGoogle()"></a>
+            <!-- end validador de google -->
+
+            <!--     validador de twitter -->
+              <a ui-sref="tabsController.notice" id="login-button7"
+                 style="border-radius:50px 50px 50px 50px;"
+                 class=" button button-positive  icon ion-social-twitter "
+                 ng-click="logintwitter(user)"></a>
+            <!-- end validador de twitter -->
+
+            <!--      validador de facebook -->
+              <a ui-sref="tabsController.notice" id="login-button8"
+                 style="border-radius:20px 20px 20px 20px;"
+                 class=" button button-positive  icon ion-social-facebook "
+                 ng-click="facebook(user)"></a>
+            <!--  end validador de facebook -->
+        </div>
+    </ion-content>
+</ion-view>
