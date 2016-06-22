@@ -1,0 +1,93 @@
+<ion-view title="Notice" >
+
+    <ion-content>
+      <ion-list>
+        <!--header delete -->
+        <ion-header-bar class="bar-positive">
+            <h1 class="title"> item:0 </h1>
+        </ion-header-bar>
+        <!--end header delete -->
+
+        <!--blank space (divider)-->
+        <div class="item item-avatar"></div>
+        <!--end blank space -->
+
+        <!-- news!     ---->
+
+        <ion-item class="item item-avatar" ng-repeat="friendsnew in friendslistnotices" friendsnew="friendsnew">
+          <!-- who's the new     ---->
+          <img src={{friendsnew.img}}> <!--img src={{friendsnew.img}}-->
+          <h2>{{friendsnew.name}}</h2>
+          <p>{{friendsnew.country}}</p>
+          <!-- end-avatar ---->
+
+
+          <!-- body-new     ---->
+          <div class="item item-body">
+            <!-- img ---->
+            <img class="full-image" ng-src="{{friendsnew.img}}">
+            <p>
+              {{friendsnew}} </br>
+              <h2>Esto es una noticia!... 3 3 3 3 3 3 3 3 </h2>
+            </p>
+            <!-- story ---->
+            <p>
+              <a href="#" class="subdued">1 Like</a>
+              <a href="#" class="subdued">5 Comments</a>
+            </p>
+            <!-- like,coments,share ---->
+          </div>
+              <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i> Like
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-chatbox"></i> Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i> Share
+            </a>
+          </div>
+
+        </ion-item>
+
+        <ion-infinite-scroll on-infinite="loadMore()" distance="50%">
+        </ion-infinite-scroll>
+        <!-- end body-new  ---->
+
+        <!-- end - news! -->
+
+
+      </ion-list>
+    </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+<!--
+
+<ion-view title="Notice" id="page3" class=" ">
+
+
+
+    <ion-content padding="true" class="has-header">
+
+        <p id="notice-markdown2" style="color:#000000;" class=" ">Some friendly
+            <strong>markdown</strong>
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blav</p>
+        <p id="notice-markdown3" style="color:#000000;" class=" ">Some friendly
+            <strong>markdown</strong>
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blav</p>
+    </ion-content>
+</ion-view>
+
+
+
+-->

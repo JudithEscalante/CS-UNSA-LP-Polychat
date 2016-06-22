@@ -1,0 +1,56 @@
+
+<ion-view cache-view="false"
+          view-title="<div class=' icon ion-chatbubble  user-messages-top-icon
+                      msg-header-username' > {{userNameTemp}}</div>">
+
+     <ion-content has-bouncing="true" class="has-header has-footer"
+         delegate-handle="userMessageScroll">
+
+           <div ng-repeat="message in messages" class="message-wrapper"
+               on-hold="onMessageHold($event, $index, message)">  <!-- -REVISAR-->
+
+              <!--   CHAT LEFT-->
+              <ion-item class="item item-avatar-left">
+                 <img ng-click="viewProfile(message)" src={{messageToUser.img}} />
+                   <div class="chat-bubble left">
+                       <div class="message">{{messageToUser.text}}</div>
+                       <div class="message-detail">
+                           <span ng-click="viewProfile(message)" class="bold">{{messageToUser.date}}</span>
+                           <span am-time-ago="time"></span><!--timer-->
+                       </div>
+                   </div>
+              </ion-item>
+              <!--end CHAT LEFT-->
+
+
+              <!--    CHAT RIGHT-->
+              <ion-item class="item item-avatar-right">
+                  <img ng-click="viewProfile(message)" src={{messageUser.img}} />
+                   <div class="chat-bubble right">
+                       <div class="message">{{messageUser.text}}</div>
+                       <div class="message-detail">
+                           <span ng-click="viewProfile(message)" class="bold">{{messageToUser.date}}</span>
+                           <span am-time-ago="time"></span> <!--timer-->
+                       </div>
+                   </ion-item>
+              </div>
+              <!--end CHAT RIGHT-->
+
+           </div>
+     </ion-content>
+
+
+
+
+    <!--button SEND-->
+      <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="Type your message" on-return="addMessage(); closeKeyboard()"
+                      ng-model="message" on-focus="inputUp()" on-blur="inputDown()" >
+            </label>
+            <button class=" button button-positive icon ion-android-send footer-btn" ng-click="addMessage()"></button>
+          </ion-footer-bar>
+    <!--end button SEND-->
+
+
+</ion-view>
