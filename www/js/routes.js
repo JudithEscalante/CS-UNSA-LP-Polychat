@@ -30,13 +30,13 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('tabsController.me', {
-    url: '/me',
+  .state('tabsController.profile', {
+    url: '/profile',
     authenticate: true,
     views: {
-      'me-tab': {
-        templateUrl: 'templates/me.html',
-        controller: 'meCtrl',
+      'profile-tab': {
+        templateUrl: 'templates/profile.html',
+        controller: 'profileCtrl',
       }
     }
   })
@@ -119,7 +119,7 @@ angular.module('app.routes', [])
 
   .state('conversation', {
     url: '/conversation',
-    authenticate: false,
+    authenticate: true,
         templateUrl: 'templates/conversation.html',
         controller: 'conversationCtrl',
         params: {

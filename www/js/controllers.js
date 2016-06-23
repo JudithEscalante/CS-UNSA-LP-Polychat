@@ -4,9 +4,15 @@ angular.module('app.controllers', [])
 
 .controller('contactsCtrl', function($scope,$state, $ionicHistory) {
   //naveganciòn...
-  $ionicHistory.nextViewOptions({
-     disableBack: true
-   });
+
+   $ionicHistory.nextViewOptions({
+     disableAnimate: false,
+     disableBack: false
+    });
+
+    $scope.data = {
+    showDelete: false
+  };
 
   $scope.friendslist = [
     {id_user:"1",
@@ -46,9 +52,11 @@ angular.module('app.controllers', [])
       country: "Perú",
       city: "Arequipa"}
   ];
+
    $scope.deleteFriendButton = function(friend){
+     /* BORRAR contacto de la BD*/
       $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
-      /* BORRAR contacto de la BD*/
+      console.log("te borre XD!");
    };
 
    $scope.editFriendButton = function(item){
@@ -132,7 +140,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('meCtrl', function($scope,$state) {
+.controller('profileCtrl', function($scope,$state) {
 
   $scope.findFriends = function(){
     $state.go('tabsController.friendRequests');
@@ -140,8 +148,6 @@ angular.module('app.controllers', [])
 
 
 })
-
-
 
 
 .controller('loginCtrl', function($scope, Auth , Auth2, Ref ,$rootScope, $state, $ionicModal, $ionicLoading) {
