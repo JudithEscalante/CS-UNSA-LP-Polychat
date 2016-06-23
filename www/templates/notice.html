@@ -1,4 +1,4 @@
-<ion-view title="Notice" >
+<ion-view title="<div>Notice <span class='badge badge-assertive'>+{{numberNotificacion}}</span></div> " >
 
   <ion-nav-buttons  side="right" >
     <div class=" buttons" >
@@ -9,7 +9,7 @@
 
     <ion-content>
       <ion-list>
-        
+
         <ion-item class="item item-avatar" ng-repeat="friendsnew in friendslistnotices" friendsnew="friendsnew">
           <!-- who's the new     ---->
           <img src={{friendsnew.img}}> <!--img src={{friendsnew.img}}-->

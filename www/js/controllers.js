@@ -73,6 +73,8 @@ angular.module('app.controllers', [])
 
 .controller('noticeCtrl', function($scope,$ionicScrollDelegate) {
 
+    $scope.numberNotificacion=125055;
+
     /*------- friend' news on DB  ------*/
     $scope.friendslistnotices = [
       {id_user:"1",
