@@ -2,23 +2,50 @@ angular.module('app.controllers', [])
 
 
 
-.controller('contactsCtrl', function($scope, $ionicHistory) {
+.controller('contactsCtrl', function($scope,$state, $ionicHistory) {
   //naveganciòn...
   $ionicHistory.nextViewOptions({
      disableBack: true
    });
 
-
   $scope.friendslist = [
-                { name: "Pollo1", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa"},
-                { name: "Pollo2", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo3", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo4", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo21", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo22", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo23", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo24", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" }
-         ];
+    {id_user:"1",
+      body:"mensaje1",
+      name:"luigy",
+      date:"199999 de agosto",
+      img:"img/eso-no-porfavor.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"12",
+      body:"respuesta2",
+      name:"pollo",
+      date:"2222222 de octubre",
+      img:"img/profile-image-1.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"13",
+      body:"mensaje3",
+      name:"Marikita",
+      date:"11111 de agosto",
+      img:"img/profile-image-5.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"1",
+      body:"mensaje3.1",
+      name:"luigy",
+      date:"5 de agosto",
+      img:"img/eso-no-porfavor.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+
+    {id_user:"19",
+      body:"respuesta34",
+      name:"felpon",
+      date:"33333 de octubre",
+      img:"img/vamo-a-calmarno.jpg",
+      country: "Perú",
+      city: "Arequipa"}
+  ];
    $scope.deleteFriendButton = function(friend){
       $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
       /* BORRAR contacto de la BD*/
@@ -27,27 +54,56 @@ angular.module('app.controllers', [])
    $scope.editFriendButton = function(item){
       /*editar contacto ITEM de la base de datos*/
    };
-   $scope.chatFriendButton = function(item){
-      /*empezar chat con ITEM */
+   $scope.sendMessage = function(objFriend){
+     $state.go('conversation',{'contact_id': objFriend.id_user });
+     console.log("contacto enviado");
    };
+
 
 })
 
 
 .controller('noticeCtrl', function($scope,$ionicScrollDelegate) {
 
-
     /*------- friend' news on DB  ------*/
     $scope.friendslistnotices = [
-                { name: "Pollo1", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa"},
-                { name: "Pollo2", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo3", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo4", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo21", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo22", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo23", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-                { name: "Pollo24", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" }
-         ];
+      {id_user:"1",
+        body:"mensaje1",
+        name:"luigy",
+        date:"199999 de agosto",
+        img:"img/eso-no-porfavor.jpg",
+        country: "Perú",
+        city: "Arequipa"},
+      {id_user:"12",
+        body:"respuesta2",
+        name:"pollo",
+        date:"2222222 de octubre",
+        img:"img/profile-image-1.jpg",
+        country: "Perú",
+        city: "Arequipa"},
+      {id_user:"13",
+        body:"mensaje3",
+        name:"Marikita",
+        date:"11111 de agosto",
+        img:"img/profile-image-5.jpg",
+        country: "Perú",
+        city: "Arequipa"},
+      {id_user:"1",
+        body:"mensaje3.1",
+        name:"luigy",
+        date:"5 de agosto",
+        img:"img/eso-no-porfavor.jpg",
+        country: "Perú",
+        city: "Arequipa"},
+
+      {id_user:"19",
+        body:"respuesta34",
+        name:"felpon",
+        date:"33333 de octubre",
+        img:"img/vamo-a-calmarno.jpg",
+        country: "Perú",
+        city: "Arequipa"}
+    ];
     /*------- end friend' news on DB  ------*/
 
 
@@ -57,7 +113,13 @@ angular.module('app.controllers', [])
       var loadnumber=10;
       for (var i = 0; i < loadnumber; i++) {
         /* conecct with DB */
-          var one_more= { name: "Pollo-load", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" };
+          var one_more= { id_user:"19",
+                          body:"respuesta34",
+                          name:"felpon",
+                          date:"33333 de octubre",
+                          img:"img/vamo-a-calmarno.jpg",
+                          country: "Perú",
+                          city: "Arequipa"};
         /* end conecct with DB */
         $scope.friendslistnotices.push(one_more);
       }
@@ -68,10 +130,14 @@ angular.module('app.controllers', [])
     });
     /*-------   end LOAD MORE NOTICEs -------*/
 
-
 })
 
-.controller('meCtrl', function($scope) {
+.controller('meCtrl', function($scope,$state) {
+
+  $scope.findFriends = function(){
+    $state.go('tabsController.friendRequests');
+  }
+
 
 })
 
@@ -113,7 +179,7 @@ angular.module('app.controllers', [])
      };
 
 
-   })
+})
 
 
 .controller('signupCtrl', function($scope, $rootScope, $state, $ionicModal, cfg, $firebaseAuth, $ionicLoading, $ionicHistory) {
@@ -159,77 +225,250 @@ angular.module('app.controllers', [])
 
     /* ----- DB stranger ----------*/
       $scope.strangerslist = [
-             { name: "Pollo1", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa"},
-             { name: "Pollo2", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo3", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo4", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo21", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo22", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo23", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo24", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" }
+                      {id_user:"1",
+                        body:"mensaje1",
+                        name:"luigy",
+                        date:"199999 de agosto",
+                        img:"img/eso-no-porfavor.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"12",
+                        body:"respuesta2",
+                        name:"pollo",
+                        date:"2222222 de octubre",
+                        img:"img/profile-image-1.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"13",
+                        body:"mensaje3",
+                        name:"Marikita",
+                        date:"11111 de agosto",
+                        img:"img/profile-image-5.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"1",
+                        body:"mensaje3.1",
+                        name:"luigy",
+                        date:"5 de agosto",
+                        img:"img/eso-no-porfavor.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
 
+                      {id_user:"19",
+                        body:"respuesta34",
+                        name:"felpon",
+                        date:"33333 de octubre",
+                        img:"img/vamo-a-calmarno.jpg",
+                        country: "Perú",
+                        city: "Arequipa"}
            ];
     /* ----  end  DB stranger ----*/
 
     /* ----- DB friendRequest ----------*/
       $scope.friendRequestslist = [
-             { name: "Pollo11", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo12", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo13", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo14", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo321", img:"img/profile-image-1.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo322", img:"img/profile-image-2.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo323", img:"img/profile-image-3.jpg", country: "Perú", city: "Arequipa" },
-             { name: "Pollo324", img:"img/profile-image-4.jpg", country: "Perú", city: "Arequipa" }
+                      {id_user:"1",
+                        body:"mensaje1",
+                        name:"luigy",
+                        date:"199999 de agosto",
+                        img:"img/eso-no-porfavor.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"12",
+                        body:"respuesta2",
+                        name:"pollo",
+                        date:"2222222 de octubre",
+                        img:"img/profile-image-1.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"13",
+                        body:"mensaje3",
+                        name:"Marikita",
+                        date:"11111 de agosto",
+                        img:"img/profile-image-5.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+                      {id_user:"1",
+                        body:"mensaje3.1",
+                        name:"luigy",
+                        date:"5 de agosto",
+                        img:"img/eso-no-porfavor.jpg",
+                        country: "Perú",
+                        city: "Arequipa"},
+
+                      {id_user:"19",
+                        body:"respuesta34",
+                        name:"felpon",
+                        date:"33333 de octubre",
+                        img:"img/vamo-a-calmarno.jpg",
+                        country: "Perú",
+                        city: "Arequipa"}
 
            ];
     /* ----  end  DB friendRequest ----*/
 
-
+    $scope.friendRequestsCtrl=function(objFriend){
+        //agregar amigos
+    }
 })
 
 
 
-.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate, $firebase, cfg) {
+.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state) {
 
-      /* variables AngularTimeAgo */
-      $scope.time = new Date();
-      /* end variables AngularTimeAgo */
-
-      $scope.userNameTemp="Felpon";
-      $scope.messageUser={text:"este es mi mensajeAA", date:"19 de agosto",img:"img/eso-no-porfavor.jpg"}
-      $scope.messageToUser={text:"esta es mi respuestaZZ", date:"22 de octubre",img:"img/vamo-a-calmarno.jpg"}
+  $scope.clearDefault = function(a){
+      if(a.defaultValue==a.value)
+          {a.value=""}
+  };
 
 
+    /* variables AngularTimeAgo */
+    $scope.time = new Date();
+    /* end variables AngularTimeAgo */
 
-      var ref = new Firebase(cfg.firebase_url + 'messages');
-      $scope.messages = $firebase(ref).$asArray();
+    $scope.allmessage=[
+                    {id_user:"1",
+                      body:"mensaje1",
+                      from:"luigy",
+                      date:"19 de agosto",
+                      img:"img/eso-no-porfavor.jpg"},
+                    {id_user:"12",
+                      body:"respuesta2",
+                      from:"pollo",
+                      date:"22 de octubre",
+                      img:"img/profile-image-1.jpg"},
+                    {id_user:"13",
+                      body:"mensaje3",
+                      from:"Marikita",
+                      date:"19 de agosto",
+                      img:"img/profile-image-5.jpg"},
+                    {id_user:"16",
+                      body:"mensaje3.1",
+                      from:"luigy",
+                      date:"19 de agosto",
+                      img:"img/eso-no-porfavor.jpg"},
+                    {id_user:"19",
+                      body:"respuesta3",
+                      from:"felpon",
+                      date:"22 de octubre",
+                      img:"img/vamo-a-calmarno.jpg"}
+    ];
 
-      $scope.addMessage = function() {
-         $scope.messages.$add({
-           from: $scope.displayName || 'Anonymous',
-           body: $scope.message
-         });
-         $scope.message = '';
-         $ionicScrollDelegate.scrollBottom(true);
-      };
+    $scope.userNameSender="luigy"; //usuario q envia el mensaje (YO)
 
-      $scope.onKeydown = function(e) {
-        if (e.keyCode === 13 && $scope.message) {
-           $scope.addMessage();
-        }
-      };
+
+    $scope.addMessage=function(){
+      $scope.allmessage.push(
+                              { body:$scope.message,
+                                from:$scope.userNameSender,
+                                date:$scope.time,
+                                img:"img/eso-no-porfavor.jpg"}  //usuario general!!!
+      );
+      $scope.messageInput='';
+      $ionicScrollDelegate.scrollBottom(true);
+      console.log("mensaje enviado");
+    };
+
+
+    $scope.sendMessage=function(obj){
+      $state.go('conversation',{'contact_id': obj.id_user });
+      console.log("contacto enviado");
+
+    };
 
 })
 
 
 
 .controller('logoutCtrl', function($scope, Auth, $state /*, ionicLoading, $ionicHistory, $timeout*/) {
-
     $scope.logout = function(){
       Auth.$unauth();
       console.log("logout complete!");
       $state.go('login');
     };
 
+})
+
+.controller('conversationCtrl', function($scope,$state, $ionicScrollDelegate,$ionicHistory) {
+  //naveganciòn...
+  $ionicHistory.nextViewOptions({
+    disableAnimate: false,
+    disableBack: false
+   });
+
+   $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+
+
+  /* variables AngularTimeAgo */
+  $scope.time = new Date();
+  /* end variables AngularTimeAgo */
+
+  $scope.allmessage=[
+    {id_user:"1",
+      body:"mensaje1",
+      name:"luigy",
+      date:"199999 de agosto",
+      img:"img/eso-no-porfavor.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"12",
+      body:"respuesta2",
+      name:"pollo",
+      date:"2222222 de octubre",
+      img:"img/profile-image-1.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"13",
+      body:"mensaje3",
+      name:"Marikita",
+      date:"11111 de agosto",
+      img:"img/profile-image-5.jpg",
+      country: "Perú",
+      city: "Arequipa"},
+    {id_user:"1",
+      body:"mensaje3.1",
+      name:"luigy",
+      date:"5 de agosto",
+      img:"img/eso-no-porfavor.jpg",
+      country: "Perú",
+      body:"respuesta34",
+      city: "Arequipa"},
+
+      {id_user:"19",
+      name:"felpon",
+      date:"33333 de octubre",
+      img:"img/vamo-a-calmarno.jpg",
+      country: "Perú",
+      city: "Arequipa"}
+  ];
+
+  var id_contac=$state.params.contact_id;
+  var id_contactIndexof = -1;
+  $scope.userNameReceiver="null" //
+  //solo para  encontrar Id_contact en base de datos
+        for(i=0;i<$scope.allmessage.length;i++){
+          if($scope.allmessage[i].id_user == id_contac){
+              id_contactIndexof = i;
+          }
+        }
+  ////////////////////////////////////////////////////////////
+
+  $scope.userNameReceiver=$scope.allmessage[id_contactIndexof].name //usuario q recibe el mensaje (destinatario)
+  $scope.userNameSender="luigy"; //usuario q envia el mensaje (YO)
+  $scope.id_userSender="1"; //usuario q envia el mensaje (YO)
+  $scope.img_userSender="img/eso-no-porfavor.jpg"; //usuario q envia el mensaje (YO)
+  ///////////////////////////////////////////////////////////////
+  $scope.addMessage=function(){
+      $scope.allmessage.push(
+                              { id_user:$scope.id_userSender,
+                                body:$scope.messageInput,
+                                name:$scope.userNameSender,
+                                date:$scope.time,
+                                img:$scope.img_userSender
+                                }
+        );
+      $scope.messageInput='';
+      $ionicScrollDelegate.scrollBottom(true);
+    };
 })

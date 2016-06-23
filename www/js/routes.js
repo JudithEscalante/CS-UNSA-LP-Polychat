@@ -52,7 +52,7 @@ angular.module('app.routes', [])
 
   .state('tabsController.friendRequests', {
     url: '/friendRequests',
-    authenticate: true,
+    authenticate: false,
     views: {
       'friendRequests-tab': {
         templateUrl: 'templates/friendRequests.html',
@@ -63,7 +63,7 @@ angular.module('app.routes', [])
 
   .state('tabsController.chatRoom', {
     url: '/chatRoom',
-    authenticate: true,
+    authenticate: false,
     views: {
       'chatRoom-tab': {
         templateUrl: 'templates/chatRoom.html',
@@ -71,10 +71,6 @@ angular.module('app.routes', [])
       }
     }
   })
-
-
-
-
 
 
 
@@ -120,6 +116,18 @@ angular.module('app.routes', [])
         controller: 'logoutCtrl',
 
   })
+
+  .state('conversation', {
+    url: '/conversation',
+    authenticate: false,
+        templateUrl: 'templates/conversation.html',
+        controller: 'conversationCtrl',
+        params: {
+          contact_id : null
+        }
+
+  })
+
 
 
 

@@ -38,10 +38,10 @@
 
       <!--item avatar-->
       <ion-item class="item item-avatar item-button-right" ng-repeat="friendRequest in friendRequestslist | filter:inputfind.filterUser">
-            <img src={{friendRequest.img}}>
-            <h2>{{friendRequest.name}}   </h2>
-            <p>{{friendRequest.country}}, {{friendRequest.city}} </p>
-            <button class="button button-positive icon ion-android-person-add"></button>
+          <img src={{friendRequest.img}}>
+          <h2>{{friendRequest.name}}   </h2>
+          <p>{{friendRequest.country}}, {{friendRequest.city}} </p>
+          <button class="button button-positive icon ion-android-person-add" ng-click="addFriend(friendRequest)"></button>
 
       </ion-item>
       <!--end item avatar-->

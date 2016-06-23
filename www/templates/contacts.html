@@ -25,7 +25,7 @@
                       <h2>{{friend.name}}</h2>
                       <p>{{friend.country}}, {{friend.city}} </p>
                       <ion-delete-button class="ion-minus-circled" ng-click="deleteFriendButton(friend)"> </ion-delete-button>
-                      <button class="button button-positive icon ion-android-chat" ng-click="chatFriendButton(item)"> </button>
+                      <button class="button button-positive icon ion-android-chat" ng-click="sendMessage(friend)"> </button>
                       <ion-option-button class="button button-positive icon ion-android-settings"  ng-click="editFriendButton(item)"></ion-option-button>
 
                 </ion-item>
