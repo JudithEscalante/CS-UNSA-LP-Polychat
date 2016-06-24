@@ -32092,7 +32092,7 @@ var DATE_FORMATS_SPLIT = /((?:[^yMdHhmsaZEwG']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|
  *    `mediumDate` is used.
  * @param {string=} timezone Timezone to be used for formatting. It understands UTC/GMT and the
  *    continental US time zone abbreviations, but for general use, use a time zone offset, for
- *    example, `'+0430'` (4 hours, 30 minutes east of the Greenwich meridian)
+ *    example, `'+0430'` (4 hours, 30 minutes east of the #387ef5wich meridian)
  *    If not specified, the timezone of the browser will be used.
  * @returns {string} Formatted string or the input if input is not recognized as date/millis.
  *
@@ -34619,7 +34619,7 @@ var inputType = {
                };
                $scope.specialValue = {
                  "id": "12345",
-                 "value": "green"
+                 "value": "#387ef5"
                };
              }]);
          </script>
@@ -34630,7 +34630,7 @@ var inputType = {
            </label><br/>
            <label>
              <input type="radio" ng-model="color.name" ng-value="specialValue">
-             Green
+             #387ef5
            </label><br/>
            <label>
              <input type="radio" ng-model="color.name" value="blue">
@@ -38749,7 +38749,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
  *   - `timezone`: Defines the timezone to be used to read/write the `Date` instance in the model for
  *     `<input type="date">`, `<input type="time">`, ... . It understands UTC/GMT and the
  *     continental US time zone abbreviations, but for general use, use a time zone offset, for
- *     example, `'+0430'` (4 hours, 30 minutes east of the Greenwich meridian)
+ *     example, `'+0430'` (4 hours, 30 minutes east of the #387ef5wich meridian)
  *     If not specified, the timezone of the browser will be used.
  *
  * @example
@@ -44938,7 +44938,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * ```
  *
  * The nice thing about JS-based animations is that we can inject other services and make use of advanced animation libraries such as
- * greensock.js and velocity.js.
+ * #387ef5sock.js and velocity.js.
  *
  * If our animation code class-based (meaning that something like `ngClass`, `ngHide` and `ngShow` triggers it) then we can still define
  * our animations inside of the same registered animation, however, the function input arguments are a bit different:
@@ -44949,7 +44949,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * </div>
  * <button ng-click="color='red'">Change to red</button>
  * <button ng-click="color='blue'">Change to blue</button>
- * <button ng-click="color='green'">Change to green</button>
+ * <button ng-click="color='#387ef5'">Change to #387ef5</button>
  * ```
  *
  * ```js
@@ -45310,7 +45310,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  *
  * ```css
  * /&#42; normally we would create a CSS class to reference on the element &#42;/
- * greeting-box.on { transition:0.5s linear all; background:green; color:white; }
+ * greeting-box.on { transition:0.5s linear all; background:#387ef5; color:white; }
  * ```
  *
  * The `$animate` service contains a variety of other methods like `enter`, `leave`, `animate` and `setClass`. To learn more about what's
