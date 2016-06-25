@@ -2,6 +2,19 @@ angular.module('app.controllers', [])
 
 
 
+.controller('tabsControllerCtrl', function($scope, $state) {
+    $scope.notification={
+                        notice: "+"+'3',
+                        friendRequests: "+"+'4',
+                        contacts: "+"+'10',
+                        chatRoom: "+"+'6'
+    };
+    $scope.go=function(ref,tab){
+      $state.go(ref);
+      $scope.notification[tab]='';
+    }
+})
+
 .controller('contactsCtrl', function($scope,$state, $ionicHistory) {
   //naveganciòn...
 
@@ -71,9 +84,10 @@ angular.module('app.controllers', [])
 })
 
 
-.controller('noticeCtrl', function($scope,$ionicScrollDelegate) {
+.controller('noticeCtrl', function($scope, $ionicScrollDelegate) {
 
-    $scope.numberNotificacion=125055;
+
+    $scope.numberNotificacion=10;
 
     /*------- friend' news on DB  ------*/
     $scope.friendslistnotices = [
@@ -228,7 +242,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('friendRequestsCtrl', function($scope) {
+.controller('friendRequestsCtrl', function($scope,$state) {
   $scope.inputfind = {};
 
     /* ----- DB stranger ----------*/

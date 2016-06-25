@@ -14,7 +14,7 @@ angular.module('app.routes', [])
     views: {
       'contacts-tab': {
         templateUrl: 'templates/contacts.html',
-        controller: 'contactsCtrl',
+        controller: 'contactsCtrl'
       }
     }
   })
@@ -25,7 +25,7 @@ angular.module('app.routes', [])
     views: {
       'notice-tab': {
         templateUrl: 'templates/notice.html',
-        controller: 'noticeCtrl',
+        controller: 'noticeCtrl'
       }
     }
   })
@@ -36,7 +36,7 @@ angular.module('app.routes', [])
     views: {
       'profile-tab': {
         templateUrl: 'templates/profile.html',
-        controller: 'profileCtrl',
+        controller: 'profileCtrl'
       }
     }
   })
@@ -44,8 +44,9 @@ angular.module('app.routes', [])
   .state('tabsController', {
     url: '/tabsController',
     authenticate: true,
-    templateUrl: 'templates/tabsController.html',
     abstract:true,
+    controller: 'tabsControllerCtrl',
+    templateUrl: 'templates/tabsController.html'
   })
 
 
@@ -56,7 +57,7 @@ angular.module('app.routes', [])
     views: {
       'friendRequests-tab': {
         templateUrl: 'templates/friendRequests.html',
-        controller: 'friendRequestsCtrl',
+        controller: 'friendRequestsCtrl'
       }
     }
   })
@@ -67,7 +68,7 @@ angular.module('app.routes', [])
     views: {
       'chatRoom-tab': {
         templateUrl: 'templates/chatRoom.html',
-        controller: 'chatRoomCtrl',
+        controller: 'chatRoomCtrl'
       }
     }
   })
@@ -91,14 +92,14 @@ angular.module('app.routes', [])
     url: '/signup',
     authenticate: false,
     templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl',
+    controller: 'signupCtrl'
   })
 
   .state('account', {
     url: '/account',
     authenticate: true,
     templateUrl: 'templates/account.html',
-    controller: 'accountCtrl',
+    controller: 'accountCtrl'
   })
 
 
@@ -106,14 +107,14 @@ angular.module('app.routes', [])
     url: '/server',
     authenticate: true,
     templateUrl: 'templates/server.html',
-    controller: 'serverCtrl',
+    controller: 'serverCtrl'
   })
 
   .state('logout', {
     url: '/logout',
     authenticate: true,
         templateUrl: 'templates/logout.html',
-        controller: 'logoutCtrl',
+        controller: 'logoutCtrl'
 
   })
 
