@@ -113,19 +113,29 @@ angular.module('app.routes', [])
   .state('logout', {
     url: '/logout',
     authenticate: true,
-        templateUrl: 'templates/logout.html',
-        controller: 'logoutCtrl'
+    templateUrl: 'templates/logout.html',
+    controller: 'logoutCtrl'
 
   })
 
   .state('conversation', {
     url: '/conversation',
     authenticate: true,
-        templateUrl: 'templates/conversation.html',
-        controller: 'conversationCtrl',
-        params: {
-          contact_id : null
-        }
+    templateUrl: 'templates/conversation.html',
+    controller: 'conversationCtrl',
+    params: {
+      contact_id : null
+    }
+
+  })
+  .state('ratingModalShow', {
+    url: '/ratingModalShow',
+    authenticate: true,
+    templateUrl: 'templates/ratingModalShow.html',
+    //controller: 'ratingModalShowCtrl',
+    params: {
+      rating : 0
+    }
 
   })
 

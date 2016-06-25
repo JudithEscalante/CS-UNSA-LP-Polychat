@@ -7,9 +7,9 @@
 // 'starter.controllers' is found in controllers.js
 
 //agregè "firebase"
-angular.module('app', ["ionic", "app.controllers",
-                        "app.routes", "app.services", "app.directives"
-                      ,"firebase","angularMoment"])
+angular.module('app', ['ionic', 'app.controllers',
+                        'app.routes', 'app.services', 'app.directives'
+                      ,'firebase','angularMoment','ionic-ratings'])
 
     //.constant & .values GLOBALES
       .constant('cfg', {
@@ -23,7 +23,8 @@ angular.module('app', ["ionic", "app.controllers",
           date:'01-01-01',
           img:'img/homero.jpg',
           country: 'constantinopla',
-          city: 'los olvidados'
+          city: 'los olvidados',
+          rating: '4'
       })
       .value('notificationsTabs',{
           notice: '3',

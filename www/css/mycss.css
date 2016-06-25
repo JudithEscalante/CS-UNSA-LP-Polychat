@@ -24,7 +24,13 @@ $dark:                            #444 !default;
   --color-chat-toUser: #5B6ABF;
 }
 
-
+.ionic_ratings .read_only {
+  pointer-events:none !important;
+}
+/*tamaño estrellas */
+.ionic_ratings .icon {
+   font-size: 50px;
+ }
 
 img.profile-pic {
 

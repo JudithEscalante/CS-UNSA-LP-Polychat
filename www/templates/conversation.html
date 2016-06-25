@@ -8,6 +8,12 @@
       <button class="button button-icon ion-arrow-left-c" ng-click='myGoBack()'></button>
     </ion-nav-buttons>
 
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-ios-star" ng-click='showConfirm()'></button>
+    </ion-nav-buttons>
+
+
+
     <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in allmessage" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->

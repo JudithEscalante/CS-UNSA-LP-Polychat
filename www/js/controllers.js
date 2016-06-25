@@ -45,9 +45,9 @@ angular.module('app.controllers', [])
 
 .controller('noticeCtrl', function($scope, $ionicScrollDelegate, mydatabaseService) {
 
-    /*------- friend' news on DB  ------*/
+    /*-------     friend' news on DB  --------*/
     $scope.friendslistnotices = mydatabaseService.database();
-    /*------- end friend' news on DB  ------*/
+    /*------- end friend' news on DB  --------*/
 
     /*-------   LOAD MORE NOTICEs -----------*/
 
@@ -74,7 +74,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('profileCtrl', function($scope,$state, userPrincipal, Camera) {
+.controller('profileCtrl', function($scope,$state, userPrincipal, Camera, $ionicPopup, $timeout) {
   $scope.user=userPrincipal;
 
   $scope.takePicture = function (options) {
@@ -111,6 +111,53 @@ angular.module('app.controllers', [])
   $scope.findFriends = function(){
     $state.go('tabsController.friendRequests');
   };
+
+
+  $scope.ratingsObject = {
+    iconOn: 'ion-ios-star',    //Optional
+    iconOff: 'ion-ios-star-outline',   //Optional
+    iconOnColor: 'rgb(200, 200, 100)',  //Optional
+    iconOffColor:  'rgb(200, 100, 100)',    //Optional
+    rating:  $scope.user.rating, //Optional
+    minRating:0,    //Optional
+    readOnly: true, //Optional
+    callback: function(rating) {    //Mandatory
+      $scope.ratingsCallback(rating);
+    }
+  };
+
+  $scope.ratingsCallback = function(rating) {
+    console.log('Selected rating is : ', rating);
+  };
+
+
+
+
+
+  // A confirm dialog
+  $scope.showConfirm = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Consume Ice Cream',
+      template: 'Are you sure you want to eat this ice cream?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+    });
+  };
+
+
+
+
+
+
+
+
+
+
 
 })
 
