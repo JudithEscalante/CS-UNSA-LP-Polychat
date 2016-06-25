@@ -28,52 +28,55 @@ angular.module('app.services', [])
   }])
 
 
+.service('mydatabaseService', [function(){
+  var mydatabaselist = [
+                  {id_user:"1",
+                    body:"bla bla bla bla bla bla bla bla",
+                    name:"felpiña2",
+                    date:"199999 de agosto",
+                    img:"img/eso-no-porfavor.jpg",
+                    country: "Perú",
+                    city: "Arequipa"},
 
-  .service('mydatabaseService', [function(){
-    var mydatabaselist = [
-                    {id_user:"1",
-                      body:"mensaje1",
-                      name:"luigy",
-                      date:"199999 de agosto",
-                      img:"img/eso-no-porfavor.jpg",
-                      country: "Perú",
-                      city: "Arequipa"},
-                    {id_user:"12",
-                      body:"respuesta2",
-                      name:"pollo",
-                      date:"2222222 de octubre",
-                      img:"img/profile-image-1.jpg",
-                      country: "Perú",
-                      city: "Arequipa"},
-                    {id_user:"13",
-                      body:"mensaje3",
-                      name:"Marikita",
-                      date:"11111 de agosto",
-                      img:"img/profile-image-5.jpg",
-                      country: "Perú",
-                      city: "Arequipa"},
-                    {id_user:"1",
-                      body:"mensaje3.1",
-                      name:"luigy",
-                      date:"5 de agosto",
-                      img:"img/eso-no-porfavor.jpg",
-                      country: "Perú",
-                      city: "Arequipa"},
-                    {id_user:"19",
-                      body:"respuesta34",
-                      name:"felpon",
-                      date:"33333 de octubre",
-                      img:"img/vamo-a-calmarno.jpg",
-                      country: "Perú",
-                      city: "Arequipa"}
-    ];
-    return{
-      database: function(){
-         return mydatabaselist;
-      }
+                  {id_user:"12",
+                    body:" bla bla bla bla",
+                    name:"pollo",
+                    date:"2222222 de octubre",
+                    img:"img/profile-image-1.jpg",
+                    country: "Perú",
+                    city: "Arequipa"},
+
+                  {id_user:"13",
+                    body:"ay ay ay ay ay ay ay ay",
+                    name:"Marikita",
+                    date:"11111 de agosto",
+                    img:"img/profile-image-5.jpg",
+                    country: "Perú",
+                    city: "Arequipa"},
+
+                  {id_user:"1",
+                    body:"bla bla bla blabla bla bla blabla bla bla bla",
+                    name:"pollino",
+                    date:"5 de agosto",
+                    img:"img/profile-image-3.jpg",
+                    country: "Perú",
+                    city: "Arequipa"},
+
+                  {id_user:"19",
+                    body:"bla bla bla",
+                    name:"felpon",
+                    date:"33333 de octubre",
+                    img:"img/que.jpg",
+                    country: "Perú",
+                    city: "Arequipa"}
+  ];
+  return{
+    database: function(){
+       return mydatabaselist;
     }
+  }
 
-  }])
+}])
 
 
 .service('BlankService', [function(){

@@ -74,8 +74,8 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('profileCtrl', function($scope,$state) {
-
+.controller('profileCtrl', function($scope,$state, userPrincipal) {
+  $scope.user=userPrincipal;
   $scope.findFriends = function(){
     $state.go('tabsController.friendRequests');
   }
@@ -178,7 +178,7 @@ angular.module('app.controllers', [])
 
 
 
-.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService) {
+.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal) {
 
   $scope.clearDefault = function(a){
       if(a.defaultValue==a.value)
@@ -191,17 +191,20 @@ angular.module('app.controllers', [])
 
     $scope.allmessage=mydatabaseService.database();
 
-
-    $scope.userNameSender="luigy"; //usuario q envia el mensaje (YO)
-
+    $scope.user=userPrincipal;
 
     $scope.addMessage=function(){
-      $scope.allmessage.push(
-                              { body:$scope.message,
-                                from:$scope.userNameSender,
-                                date:$scope.time,
-                                img:"img/eso-no-porfavor.jpg"}  //usuario general!!!
-      );
+      //console.log($scope.messageInput);
+      //$scope.user.body=$scope.messageInput;
+      //console.log(userPrincipal.body);
+      // $scope.allmessage.push($scope.user);
+      $scope.allmessage.push( { id_user: '3',
+                                    body:$scope.messageInput,
+                                    name:'felpon',
+                                    date:'01-01-01',
+                                    img:'img/homero.jpg',
+                                    country: 'constantinopla',
+                                    city: 'los olvidados'});
       $scope.messageInput='';
       $ionicScrollDelegate.scrollBottom(true);
       console.log("mensaje enviado");
@@ -227,7 +230,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService) {
+.controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService,userPrincipal) {
   //naveganciòn...
   $ionicHistory.nextViewOptions({
     disableAnimate: false,
@@ -243,24 +246,21 @@ angular.module('app.controllers', [])
   $scope.time = new Date();
   /* end variables AngularTimeAgo */
 
+  $scope.user=userPrincipal;
   $scope.allmessage=mydatabaseService.database();
 
+  ////////////////////////////////////////////////////////////
   var id_contac=$state.params.contact_id;
   var id_contactIndexof = -1;
-  $scope.userNameReceiver="null" //
   //solo para  encontrar Id_contact en base de datos
         for(i=0;i<$scope.allmessage.length;i++){
           if($scope.allmessage[i].id_user == id_contac){
               id_contactIndexof = i;
           }
         }
-  ////////////////////////////////////////////////////////////
-
-  $scope.userNameReceiver=$scope.allmessage[id_contactIndexof].name //usuario q recibe el mensaje (destinatario)
-  $scope.userNameSender="luigy"; //usuario q envia el mensaje (YO)
-  $scope.id_userSender="1"; //usuario q envia el mensaje (YO)
-  $scope.img_userSender="img/eso-no-porfavor.jpg"; //usuario q envia el mensaje (YO)
+  $scope.userNameReceiver=$scope.allmessage[id_contactIndexof]; //usuario q recibe el mensaje (destinatario)
   ///////////////////////////////////////////////////////////////
+
   $scope.addMessage=function(){
       $scope.allmessage.push(
                               { id_user:$scope.id_userSender,

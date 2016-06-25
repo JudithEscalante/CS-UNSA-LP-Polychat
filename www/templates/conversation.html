@@ -1,7 +1,7 @@
 
 <ion-view cache-view="true"
           view-title="<div class=' icon ion-chatbubble  user-messages-top-icon
-                      msg-header-username' > {{userNameReceiver}} </div>
+                      msg-header-username' > {{userNameReceiver.name}} </div>
                       ">
 
     <ion-nav-buttons side="left">
@@ -11,7 +11,7 @@
     <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in allmessage" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->
-            <ion-item class="item item-avatar-left" ng-if="message.name == userNameReceiver">
+            <ion-item class="item item-avatar-left" ng-if="message.name == userNameReceiver.name">
                <img ng-click="" src={{message.img}} />
                  <div class="chat-bubble left">
                      <div class="message"> {{message.body}}</div>
@@ -24,7 +24,7 @@
             <!--end CHAT LEFT - Receiver - otros-->
 
             <!--   CHAT RIGHT - Sender - yo-->
-            <ion-item class="item item-avatar-right" ng-if="message.name == userNameSender">
+            <ion-item class="item item-avatar-right" ng-if="message.name == user.name">
                 <img ng-click="" src={{message.img}} />
                  <div class="chat-bubble right">
                      <div class="message">{{message.body}}</div>
@@ -44,7 +44,7 @@
                 <input type="text" placeholder="Type your fuc*#~@! message" ng-model="messageInput">
             </label>
             <button class=" button button-positive icon ion-android-send footer-btn"
-                    ng-click="addMessage()" ng-disabled="!messageInput || messageInput === ''"></button>
+                    ng-click="addMessage(messageInput)" ng-disabled="!messageInput || messageInput === ''"></button>
       </ion-footer-bar>
     <!--end button SEND-->
 

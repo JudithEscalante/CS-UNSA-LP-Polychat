@@ -11,20 +11,19 @@ angular.module('app', ["ionic", "app.controllers",
                         "app.routes", "app.services", "app.directives"
                       ,"firebase","angularMoment"])
 
-
     //.constant & .values GLOBALES
       .constant('cfg', {
         firebase_url: 'https://jn6h.firebaseio.com/gdgguadalajara/codelab/'
         //firebase_url: 'https://polychatcsunsa.firebaseio.com/'
       })
       .value('userPrincipal',{
-          id_user: '',
-          body:'',
-          name:'',
-          date:'',
-          img:'',
-          country: '',
-          city: ''
+          id_user: '3',
+          body:'este es una mensaje complejo',
+          name:'felpon',
+          date:'01-01-01',
+          img:'img/homero.jpg',
+          country: 'constantinopla',
+          city: 'los olvidados'
       })
       .value('notificationsTabs',{
           notice: '3',
