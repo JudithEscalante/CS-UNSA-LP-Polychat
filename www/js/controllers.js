@@ -2,139 +2,57 @@ angular.module('app.controllers', [])
 
 
 
-.controller('tabsControllerCtrl', function($scope, $state) {
-    $scope.notification={
-                        notice: "+"+'3',
-                        friendRequests: "+"+'4',
-                        contacts: "+"+'10',
-                        chatRoom: "+"+'6'
-    };
+.controller('tabsControllerCtrl', function($scope, $state, notificationsTabs) {
+
+    $scope.notification=notificationsTabs;
     $scope.go=function(ref,tab){
       $state.go(ref);
       $scope.notification[tab]='';
     }
 })
 
-.controller('contactsCtrl', function($scope,$state, $ionicHistory) {
+.controller('contactsCtrl', function($scope,$state, $ionicHistory, mydatabaseService) {
   //naveganciòn...
-
-   $ionicHistory.nextViewOptions({
+    $ionicHistory.nextViewOptions({
      disableAnimate: false,
      disableBack: false
     });
 
     $scope.data = {
     showDelete: false
-  };
+    };
 
-  $scope.friendslist = [
-    {id_user:"1",
-      body:"mensaje1",
-      name:"luigy",
-      date:"199999 de agosto",
-      img:"img/eso-no-porfavor.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"12",
-      body:"respuesta2",
-      name:"pollo",
-      date:"2222222 de octubre",
-      img:"img/profile-image-1.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"13",
-      body:"mensaje3",
-      name:"Marikita",
-      date:"11111 de agosto",
-      img:"img/profile-image-5.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"1",
-      body:"mensaje3.1",
-      name:"luigy",
-      date:"5 de agosto",
-      img:"img/eso-no-porfavor.jpg",
-      country: "Perú",
-      city: "Arequipa"},
+    $scope.friendslist = mydatabaseService.database();
 
-    {id_user:"19",
-      body:"respuesta34",
-      name:"felpon",
-      date:"33333 de octubre",
-      img:"img/vamo-a-calmarno.jpg",
-      country: "Perú",
-      city: "Arequipa"}
-  ];
+    $scope.deleteFriendButton = function(friend){
+   /* BORRAR contacto de la BD*/
+    $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
+    console.log("te borre XD!");
+    };
 
-   $scope.deleteFriendButton = function(friend){
-     /* BORRAR contacto de la BD*/
-      $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
-      console.log("te borre XD!");
-   };
+    $scope.editFriendButton = function(item){
+        /*editar contacto ITEM de la base de datos*/
+    };
 
-   $scope.editFriendButton = function(item){
-      /*editar contacto ITEM de la base de datos*/
-   };
-   $scope.sendMessage = function(objFriend){
-     $state.go('conversation',{'contact_id': objFriend.id_user });
-     console.log("contacto enviado");
-   };
+    $scope.sendMessage = function(objFriend){
+    $state.go('conversation',{'contact_id': objFriend.id_user });
+    console.log("contacto enviado");
+    };
 
 
 })
 
 
-.controller('noticeCtrl', function($scope, $ionicScrollDelegate) {
-
-
-    $scope.numberNotificacion=10;
+.controller('noticeCtrl', function($scope, $ionicScrollDelegate, mydatabaseService) {
 
     /*------- friend' news on DB  ------*/
-    $scope.friendslistnotices = [
-      {id_user:"1",
-        body:"mensaje1",
-        name:"luigy",
-        date:"199999 de agosto",
-        img:"img/eso-no-porfavor.jpg",
-        country: "Perú",
-        city: "Arequipa"},
-      {id_user:"12",
-        body:"respuesta2",
-        name:"pollo",
-        date:"2222222 de octubre",
-        img:"img/profile-image-1.jpg",
-        country: "Perú",
-        city: "Arequipa"},
-      {id_user:"13",
-        body:"mensaje3",
-        name:"Marikita",
-        date:"11111 de agosto",
-        img:"img/profile-image-5.jpg",
-        country: "Perú",
-        city: "Arequipa"},
-      {id_user:"1",
-        body:"mensaje3.1",
-        name:"luigy",
-        date:"5 de agosto",
-        img:"img/eso-no-porfavor.jpg",
-        country: "Perú",
-        city: "Arequipa"},
-
-      {id_user:"19",
-        body:"respuesta34",
-        name:"felpon",
-        date:"33333 de octubre",
-        img:"img/vamo-a-calmarno.jpg",
-        country: "Perú",
-        city: "Arequipa"}
-    ];
+    $scope.friendslistnotices = mydatabaseService.database();
     /*------- end friend' news on DB  ------*/
-
 
     /*-------   LOAD MORE NOTICEs -----------*/
 
     $scope.loadMore = function() {
-      var loadnumber=10;
+      var loadnumber=2;
       for (var i = 0; i < loadnumber; i++) {
         /* conecct with DB */
           var one_more= { id_user:"19",
@@ -242,90 +160,15 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('friendRequestsCtrl', function($scope,$state) {
+.controller('friendRequestsCtrl', function($scope,$state, mydatabaseService) {
   $scope.inputfind = {};
 
     /* ----- DB stranger ----------*/
-      $scope.strangerslist = [
-                      {id_user:"1",
-                        body:"mensaje1",
-                        name:"luigy",
-                        date:"199999 de agosto",
-                        img:"img/eso-no-porfavor.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"12",
-                        body:"respuesta2",
-                        name:"pollo",
-                        date:"2222222 de octubre",
-                        img:"img/profile-image-1.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"13",
-                        body:"mensaje3",
-                        name:"Marikita",
-                        date:"11111 de agosto",
-                        img:"img/profile-image-5.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"1",
-                        body:"mensaje3.1",
-                        name:"luigy",
-                        date:"5 de agosto",
-                        img:"img/eso-no-porfavor.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-
-                      {id_user:"19",
-                        body:"respuesta34",
-                        name:"felpon",
-                        date:"33333 de octubre",
-                        img:"img/vamo-a-calmarno.jpg",
-                        country: "Perú",
-                        city: "Arequipa"}
-           ];
+      $scope.strangerslist =  mydatabaseService.database();
     /* ----  end  DB stranger ----*/
 
     /* ----- DB friendRequest ----------*/
-      $scope.friendRequestslist = [
-                      {id_user:"1",
-                        body:"mensaje1",
-                        name:"luigy",
-                        date:"199999 de agosto",
-                        img:"img/eso-no-porfavor.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"12",
-                        body:"respuesta2",
-                        name:"pollo",
-                        date:"2222222 de octubre",
-                        img:"img/profile-image-1.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"13",
-                        body:"mensaje3",
-                        name:"Marikita",
-                        date:"11111 de agosto",
-                        img:"img/profile-image-5.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-                      {id_user:"1",
-                        body:"mensaje3.1",
-                        name:"luigy",
-                        date:"5 de agosto",
-                        img:"img/eso-no-porfavor.jpg",
-                        country: "Perú",
-                        city: "Arequipa"},
-
-                      {id_user:"19",
-                        body:"respuesta34",
-                        name:"felpon",
-                        date:"33333 de octubre",
-                        img:"img/vamo-a-calmarno.jpg",
-                        country: "Perú",
-                        city: "Arequipa"}
-
-           ];
+      $scope.friendRequestslist = mydatabaseService.database();
     /* ----  end  DB friendRequest ----*/
 
     $scope.friendRequestsCtrl=function(objFriend){
@@ -335,45 +178,19 @@ angular.module('app.controllers', [])
 
 
 
-.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state) {
+.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService) {
 
   $scope.clearDefault = function(a){
       if(a.defaultValue==a.value)
           {a.value=""}
   };
 
-
     /* variables AngularTimeAgo */
     $scope.time = new Date();
     /* end variables AngularTimeAgo */
 
-    $scope.allmessage=[
-                    {id_user:"1",
-                      body:"mensaje1",
-                      from:"luigy",
-                      date:"19 de agosto",
-                      img:"img/eso-no-porfavor.jpg"},
-                    {id_user:"12",
-                      body:"respuesta2",
-                      from:"pollo",
-                      date:"22 de octubre",
-                      img:"img/profile-image-1.jpg"},
-                    {id_user:"13",
-                      body:"mensaje3",
-                      from:"Marikita",
-                      date:"19 de agosto",
-                      img:"img/profile-image-5.jpg"},
-                    {id_user:"16",
-                      body:"mensaje3.1",
-                      from:"luigy",
-                      date:"19 de agosto",
-                      img:"img/eso-no-porfavor.jpg"},
-                    {id_user:"19",
-                      body:"respuesta3",
-                      from:"felpon",
-                      date:"22 de octubre",
-                      img:"img/vamo-a-calmarno.jpg"}
-    ];
+    $scope.allmessage=mydatabaseService.database();
+
 
     $scope.userNameSender="luigy"; //usuario q envia el mensaje (YO)
 
@@ -410,7 +227,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('conversationCtrl', function($scope,$state, $ionicScrollDelegate,$ionicHistory) {
+.controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService) {
   //naveganciòn...
   $ionicHistory.nextViewOptions({
     disableAnimate: false,
@@ -426,44 +243,7 @@ angular.module('app.controllers', [])
   $scope.time = new Date();
   /* end variables AngularTimeAgo */
 
-  $scope.allmessage=[
-    {id_user:"1",
-      body:"mensaje1",
-      name:"luigy",
-      date:"199999 de agosto",
-      img:"img/eso-no-porfavor.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"12",
-      body:"respuesta2",
-      name:"pollo",
-      date:"2222222 de octubre",
-      img:"img/profile-image-1.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"13",
-      body:"mensaje3",
-      name:"Marikita",
-      date:"11111 de agosto",
-      img:"img/profile-image-5.jpg",
-      country: "Perú",
-      city: "Arequipa"},
-    {id_user:"1",
-      body:"mensaje3.1",
-      name:"luigy",
-      date:"5 de agosto",
-      img:"img/eso-no-porfavor.jpg",
-      country: "Perú",
-      body:"respuesta34",
-      city: "Arequipa"},
-
-      {id_user:"19",
-      name:"felpon",
-      date:"33333 de octubre",
-      img:"img/vamo-a-calmarno.jpg",
-      country: "Perú",
-      city: "Arequipa"}
-  ];
+  $scope.allmessage=mydatabaseService.database();
 
   var id_contac=$state.params.contact_id;
   var id_contactIndexof = -1;

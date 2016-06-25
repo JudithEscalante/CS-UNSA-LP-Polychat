@@ -10,15 +10,28 @@
 angular.module('app', ["ionic", "app.controllers",
                         "app.routes", "app.services", "app.directives"
                       ,"firebase","angularMoment"])
-    //agregando .constant y .service
 
+
+    //.constant & .values GLOBALES
       .constant('cfg', {
         firebase_url: 'https://jn6h.firebaseio.com/gdgguadalajara/codelab/'
         //firebase_url: 'https://polychatcsunsa.firebaseio.com/'
-
       })
-    //parametro màs importante    rootRef
-  //  .service('rootRef', ['FirebaseUrl', Firebase])
+      .value('userPrincipal',{
+          id_user: '',
+          body:'',
+          name:'',
+          date:'',
+          img:'',
+          country: '',
+          city: ''
+      })
+      .value('notificationsTabs',{
+          notice: '3',
+          friendRequests: '3',
+          contacts: '3',
+          chatRoom: '3'
+      })
 
 
 //agregè  lo siguiente ( $rootScope, $state, Auth)

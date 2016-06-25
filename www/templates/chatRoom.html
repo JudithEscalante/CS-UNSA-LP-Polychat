@@ -8,7 +8,7 @@
            <div ng-repeat="message in allmessage" class="message-wrapper">
 
               <!--   CHAT LEFT - Receiver - otros-->
-               <ion-item class="item item-avatar-left" ng-if="message.from != userNameSender">
+               <ion-item class="item item-avatar-left" ng-if="message.name != userNameSender">
                   <img ng-click="sendMessage(message)" src={{message.img}} />
                     <div class="chat-bubble left">
                         <div class="message"> {{message.body}}</div>
@@ -21,7 +21,7 @@
                <!--end CHAT LEFT - Receiver - otros-->
 
                <!--   CHAT RIGHT - Sender - yo-->
-               <ion-item class="item item-avatar-right" ng-if="message.from == userNameSender">
+               <ion-item class="item item-avatar-right" ng-if="message.name == userNameSender">
                    <img ng-click="" src={{message.img}} />
                     <div class="chat-bubble right">
                         <div class="message">{{message.body}}</div>
@@ -39,7 +39,7 @@
     <!--button SEND-->
       <ion-footer-bar  class="bar-stable item-input-inset"   >
             <label class="item-input-wrapper" >
-                <input type="text" placeholder="Type your fuck@#@#@@! messageInput" ng-model="messageInput">
+                <input type="text" placeholder="Type your fuck@#@#@@! message" ng-model="messageInput">
             </label>
             <button class=" button button-positive icon ion-android-send footer-btn"
                     ng-click="addMessage()" ng-disabled="!messageInput || messageInput === ''" ></button>
