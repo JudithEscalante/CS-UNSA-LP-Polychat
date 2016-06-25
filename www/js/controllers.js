@@ -74,12 +74,43 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('profileCtrl', function($scope,$state, userPrincipal) {
+.controller('profileCtrl', function($scope,$state, userPrincipal, Camera) {
+  $scope.user=userPrincipal;
+
+  $scope.takePicture = function (options) {
+    console.log("start takePicture");
+    var options = {
+                     quality : 75,
+                     targetWidth: 200,
+                     targetHeight: 200,
+                     sourceType: 1
+    };
+    Camera.getPicture(options).then(function(imageData) {
+       user.img = imageData;
+    }, function(err) {
+       console.log(err);
+    });
+  };
+  $scope.getPicture = function (options) {
+    console.log("start-getPicture");
+     var options = {
+        quality : 75,
+        targetWidth: 200,
+        targetHeight: 200,
+        sourceType: 0
+     };
+
+     Camera.getPicture(options).then(function(imageData) {
+        user.img = imageData;
+     }, function(err) {
+        console.log(err);
+     });
+  };
+
   $scope.user=userPrincipal;
   $scope.findFriends = function(){
     $state.go('tabsController.friendRequests');
-  }
-
+  };
 
 })
 

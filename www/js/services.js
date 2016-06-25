@@ -1,9 +1,24 @@
 angular.module('app.services', [])
 
+//       CORDOVA Camera
+.factory('Camera', function($q) {
 
+   return {
+      getPicture: function(options) {
+         var q = $q.defer();
+         navigator.camera.getPicture(function(result) {
+            q.resolve(result);
+         }, function(err) {
+            q.reject(err);
+         }, options);
+
+         return q.promise;
+      }
+   }
+})
+// END - CORDOVA Camera
 
 //     conectandon con FIREBASE
-
 .factory('Ref', function($firebaseAuth, cfg) {
     return  new Firebase(cfg.firebase_url);
   })
