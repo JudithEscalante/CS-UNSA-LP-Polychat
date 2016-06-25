@@ -86,7 +86,7 @@ angular.module('app.controllers', [])
                      sourceType: 1
     };
     Camera.getPicture(options).then(function(imageData) {
-       user.img = imageData;
+       $scope.user.img = imageData;
     }, function(err) {
        console.log(err);
     });
@@ -101,7 +101,7 @@ angular.module('app.controllers', [])
      };
 
      Camera.getPicture(options).then(function(imageData) {
-        user.img = imageData;
+        $scope.user.img = imageData;
      }, function(err) {
         console.log(err);
      });
