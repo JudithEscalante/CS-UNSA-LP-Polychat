@@ -132,10 +132,10 @@ angular.module('app.routes', [])
     url: '/ratingModalShow',
     authenticate: true,
     templateUrl: 'templates/ratingModalShow.html',
-    //controller: 'ratingModalShowCtrl',
-    params: {
-      rating : 0
-    }
+    controller: 'ratingModalShowCtrl',
+    // params: {
+    //   rating : 0
+    // }
 
   })
 

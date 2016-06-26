@@ -1,7 +1,6 @@
 angular.module('app.controllers', [])
 
 
-
 .controller('tabsControllerCtrl', function($scope, $state, notificationsTabs) {
 
     $scope.notification=notificationsTabs;
@@ -74,7 +73,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('profileCtrl', function($scope,$state, userPrincipal, Camera, $ionicPopup, $timeout) {
+.controller('profileCtrl', function($scope,$state, userPrincipal, Camera) {
   $scope.user=userPrincipal;
 
   $scope.takePicture = function (options) {
@@ -113,7 +112,7 @@ angular.module('app.controllers', [])
   };
 
 
-  $scope.ratingsObject = {
+  $scope.ratingsObject2 = {
     iconOn: 'ion-ios-star',    //Optional
     iconOff: 'ion-ios-star-outline',   //Optional
     iconOnColor: 'rgb(200, 200, 100)',  //Optional
@@ -127,32 +126,8 @@ angular.module('app.controllers', [])
   };
 
   $scope.ratingsCallback = function(rating) {
-    console.log('Selected rating is : ', rating);
+    console.log('profile: Selected rating is : ', rating);
   };
-
-
-
-
-
-  // A confirm dialog
-  $scope.showConfirm = function() {
-    var confirmPopup = $ionicPopup.confirm({
-      title: 'Consume Ice Cream',
-      template: 'Are you sure you want to eat this ice cream?'
-    });
-    confirmPopup.then(function(res) {
-      if(res) {
-        console.log('You are sure');
-      } else {
-        console.log('You are not sure');
-      }
-    });
-  };
-
-
-
-
-
 
 
 
@@ -308,7 +283,12 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService,userPrincipal) {
+.controller('ratingModalShowCtrl', function($scope) {
+
+
+})
+
+.controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService,userPrincipal,$ionicPopover) {
   //naveganciòn...
   $ionicHistory.nextViewOptions({
     disableAnimate: false,
@@ -339,16 +319,42 @@ angular.module('app.controllers', [])
   $scope.userNameReceiver=$scope.allmessage[id_contactIndexof]; //usuario q recibe el mensaje (destinatario)
   ///////////////////////////////////////////////////////////////
 
+
   $scope.addMessage=function(){
-      $scope.allmessage.push(
-                              { id_user:$scope.id_userSender,
-                                body:$scope.messageInput,
-                                name:$scope.userNameSender,
-                                date:$scope.time,
-                                img:$scope.img_userSender
-                                }
-        );
-      $scope.messageInput='';
-      $ionicScrollDelegate.scrollBottom(true);
-    };
+    $scope.allmessage.push(
+                            { id_user:$scope.id_userSender,
+                              body:$scope.messageInput,
+                              name:$scope.userNameSender,
+                              date:$scope.time,
+                              img:$scope.img_userSender
+                              }
+      );
+    $scope.messageInput='';
+    $ionicScrollDelegate.scrollBottom(true);
+  };
+
+  $ionicPopover.fromTemplateUrl('templates/ratingModalShow.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.ratingsCallback = function(rating) {
+    console.log('Selected rating is : ', rating);
+  };
+
+  $scope.ratingsObject = {
+    iconOn: 'ion-ios-star',    //Optional
+    iconOff: 'ion-ios-star-outline',   //Optional
+    iconOnColor: 'rgb(200, 200, 100)',  //Optional
+    iconOffColor:  'rgb(200, 100, 100)',    //Optional
+    rating:  $scope.user.rating, //Optional
+    minRating: 0,    //Optional
+    readOnly: false, //Optional
+    callback: function(rating) {    //Mandatory
+      $scope.ratingsCallback(rating);
+      $scope.user.rating=rating;
+    }
+  };
+
 })

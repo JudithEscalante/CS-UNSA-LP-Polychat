@@ -24,7 +24,7 @@ angular.module('app', ['ionic', 'app.controllers',
           img:'img/homero.jpg',
           country: 'constantinopla',
           city: 'los olvidados',
-          rating: '4'
+          rating: '5'
       })
       .value('notificationsTabs',{
           notice: '3',
