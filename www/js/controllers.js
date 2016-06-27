@@ -39,6 +39,25 @@ angular.module('app.controllers', [])
     };
 
 
+  // $scope.listSplit = [];
+  //   var lastChar = '';
+  //   for(var i=0,len=list.length; i<len; i++) {
+  //     var item = list[i];
+  //
+  //     if(item.name.charAt(0) != lastChar) {
+  //       $scope.list.push({name:item.name.charAt(0),letter:true});
+  //       lastChar = item.name.charAt(0);
+  //     }
+  //     $scope.list.push(item);
+  //
+  // }
+
+
+
+
+
+
+
 })
 
 
@@ -263,9 +282,20 @@ angular.module('app.controllers', [])
       $scope.friendRequestslist = mydatabaseService.database();
     /* ----  end  DB friendRequest ----*/
 
-    $scope.friendRequestsCtrl=function(objFriend){
+    $scope.addFriend=function(){
         //agregar amigos
+        console.log("addFriend");
     }
+
+    $scope.confirm = function(){
+      console.log("confirm");
+    }
+    $scope.delete = function(){
+      console.log("delete");
+    }
+
+
+
 })
 
 
@@ -322,7 +352,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('ratingModalShowCtrl', function($scope) {
+.controller('ratingPopoverCtrl', function($scope) {
 })
 
 .controller('buttonUpdatePhotoCtrl', function($scope) {
@@ -373,7 +403,7 @@ angular.module('app.controllers', [])
     $ionicScrollDelegate.scrollBottom(true);
   };
 
-  $ionicPopover.fromTemplateUrl('templates/ratingModalShow.html', {
+  $ionicPopover.fromTemplateUrl('templates/ratingPopover.html', {
     scope: $scope,
   }).then(function(popover) {
     $scope.popover = popover;

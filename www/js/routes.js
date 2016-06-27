@@ -138,11 +138,11 @@ angular.module('app.routes', [])
 
 
 
-  .state('ratingModalShow', {
-    url: '/ratingModalShow',
+  .state('ratingPopover', {
+    url: '/ratingPopover',
     authenticate: true,
-    templateUrl: 'templates/ratingModalShow.html',
-    controller: 'ratingModalShowCtrl',
+    templateUrl: 'templates/ratingPopover.html',
+    controller: 'ratingPopoverCtrl',
     // params: {
     //   rating : 0
     // }

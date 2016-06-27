@@ -31,7 +31,7 @@ $dark:                            #444 !default;
 }
 /*tamaño estrellas */
 .ionic_ratings .icon {
-   font-size: 50px;
+   font-size: 35px; /*tamaño estrellas*/
  }
 
 img.profile-pic {
@@ -112,6 +112,9 @@ ion-popover-view.fit {
   height: 163px;
 }
 
+.right{
+  float: right;
+}
 
 .button-right{
   float:right;
