@@ -46,22 +46,9 @@ $dark:                            #444 !default;
  }
 
 
-img.profile-pic {
 
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -50px;
-}
 
-img.profile-pic.left {
-  left: 10px;
-}
 
-img.profile-pic.right {
-  right: 10px;
-}
 
 
 .chat-bubble {
@@ -279,16 +266,18 @@ img.profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
   bottom: 10px;
 }
 
 img.profile-pic.left {
-  left: 10px;
+  left: 80px;
+  top: 60px;
 }
 
 img.profile-pic.right {
-  right: 10px;
+  right: 80px;
+  top: 60px;
 }
 
 .ion-email {
