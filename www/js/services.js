@@ -18,6 +18,20 @@ angular.module('app.services', [])
 })
 // END - CORDOVA Camera
 
+
+.filter('nl2br', ['$filter',
+  function($filter) {
+    return function(data) {
+      if (!data) return data;
+      return data.replace(/\n\r?/g, '<br />');
+    };
+  }
+])
+
+
+
+
+
 //     conectandon con FIREBASE
 .factory('Ref', function($firebaseAuth, cfg) {
     return  new Firebase(cfg.firebase_url);
@@ -26,6 +40,7 @@ angular.module('app.services', [])
     return $firebaseAuth(Ref);
   })
 //end- conectandon con FIREBASE
+
 
 
 
@@ -92,6 +107,10 @@ angular.module('app.services', [])
   }
 
 }])
+
+
+
+
 
 
 .service('BlankService', [function(){

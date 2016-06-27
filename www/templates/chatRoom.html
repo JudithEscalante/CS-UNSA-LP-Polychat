@@ -3,47 +3,65 @@
                       msg-header-username' > Welcome {{user.name}} </div>">
 
 
-    <ion-content has-bouncing="true" class="has-header has-footer"
-         delegate-handle="userMessageScroll">
+    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
            <div ng-repeat="message in allmessage" class="message-wrapper">
 
               <!--   CHAT LEFT - Receiver - otros-->
-               <ion-item class="item item-avatar-left" ng-if="message.name != user.name">
-                  <img ng-click="sendMessage(message)" src={{message.img}} />
-                    <div class="chat-bubble left">
-                        <div class="message"> {{message.body}}</div>
-                        <div class="message-detail">
-                            <span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
-                            <span am-time-ago="time"></span><!--timer-->
-                        </div>
-                    </div>
+
+              <ion-item class="item item-avatar-left" ng-if="message.name != user.name">
+
+              <img ng-click="viewProfile()" class="profile-pic left" src={{message.img}}  />
+
+                <div class="chat-bubble left">
+                  <div class="message" ng-bind-html="message.body | nl2br" autolinker></div>
+                  <div class="message-detail">
+                      <span ng-click="viewProfile()" class="bold">{{message.name}}</span>,
+                      <span am-time-ago={{time}}></span>
+                  </div>
+                </div>
+
                </ion-item>
                <!--end CHAT LEFT - Receiver - otros-->
 
                <!--   CHAT RIGHT - Sender - yo-->
                <ion-item class="item item-avatar-right" ng-if="message.name == user.name">
-                   <img ng-click="" src={{message.img}} />
-                    <div class="chat-bubble right">
-                        <div class="message">{{message.body}}</div>
-                        <div class="message-detail">
-                            <span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
-                            <span am-time-ago="time"></span> <!--timer-->
-                        </div>
-                    </ion-item>
-               </div>
+
+
+                 <div class="chat-bubble right">
+                   <div class="message"> {{message.body}}</div>
+                   <div class="message-detail">
+                       <span ng-click="viewProfile(message)"
+                       class="bold">{{message.name}}</span>,
+                        <span am-time-ago={{time}}></span>
+                   </div>
+                 </div>
+               </ion-item>
+
                <!--end CHAT RIGHT - Sender - yo-->
-           </div>
+         </div>
     </ion-content>
 
 
+
+
+
     <!--button SEND-->
+    <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
       <ion-footer-bar  class="bar-stable item-input-inset"   >
             <label class="item-input-wrapper" >
+              <!-- <textarea ng-model="input.message" value="" placeholder="Send {{toUser.username}} a message..." required minlength="1" maxlength="1500" msd-elastic></textarea> -->
                 <input type="text" placeholder="Type your fuck@#@#@@! message" ng-model="messageInput">
             </label>
-            <button class=" button button-positive icon ion-android-send footer-btn"
+
+            <!-- <div class="footer-btn-wrap">
+              <button class="button button-icon icon ion-android-send footer-btn" type="submit"
+              ng-disabled="!input.message || input.message === ''">
+            </button>
+          </div> -->
+              <button class=" button button-positive icon ion-android-send"
                     ng-click="addMessage()" ng-disabled="!messageInput || messageInput === ''" ></button>
       </ion-footer-bar>
+    </form>
     <!--end button SEND-->
 
 </ion-view>

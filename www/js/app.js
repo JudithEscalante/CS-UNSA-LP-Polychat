@@ -27,7 +27,7 @@ angular.module('app', ['ionic', 'app.controllers',
           rating: '3'
       })
       .value('notificationsTabs',{
-          notice: '3',
+          notice: 0 ,
           friendRequests: '3',
           contacts: '3',
           chatRoom: '3'
