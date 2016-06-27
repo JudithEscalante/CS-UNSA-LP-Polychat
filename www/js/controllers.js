@@ -73,9 +73,15 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('profileCtrl', function($scope,$state, userPrincipal, Camera) {
+.controller('profileCtrl', function($scope,$state, userPrincipal, Camera, $ionicPopover) {
   $scope.user=userPrincipal;
 
+  // $scope.takePicture2 = function (options){
+  //   console.log("takePicture2");
+  // }
+  // $scope.getPicture2 = function (options){
+  //   console.log("getPicture2");
+  // }
   $scope.takePicture = function (options) {
     console.log("start takePicture");
     var options = {
@@ -112,6 +118,32 @@ angular.module('app.controllers', [])
   };
 
 
+  $scope.backgroundPicture='img/fondo3.jpg';
+
+  $scope.getBackgrundPicture = function (options) {
+    console.log("getBackground-Picture");
+     var options = {
+        quality : 75,
+        targetWidth: 200,
+        targetHeight: 200,
+        sourceType: 0
+     };
+
+     Camera.getPicture(options).then(function(imageData) {
+        $scope.backgroundPicture = imageData;
+     }, function(err) {
+        console.log(err);
+     });
+  };
+
+  $scope.user=userPrincipal;
+  $scope.findFriends = function(){
+    $state.go('tabsController.friendRequests');
+  };
+
+
+
+
   $scope.ratingsObject2 = {
     iconOn: 'ion-ios-star',    //Optional
     iconOff: 'ion-ios-star-outline',   //Optional
@@ -128,6 +160,13 @@ angular.module('app.controllers', [])
   $scope.ratingsCallback = function(rating) {
     console.log('profile: Selected rating is : ', rating);
   };
+
+
+  $ionicPopover.fromTemplateUrl('templates/buttonUpdatePhoto.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
 
 
 
@@ -284,8 +323,9 @@ angular.module('app.controllers', [])
 })
 
 .controller('ratingModalShowCtrl', function($scope) {
+})
 
-
+.controller('buttonUpdatePhotoCtrl', function($scope) {
 })
 
 .controller('conversationCtrl', function($scope,$state,$ionicScrollDelegate,$ionicHistory,mydatabaseService,userPrincipal,$ionicPopover) {

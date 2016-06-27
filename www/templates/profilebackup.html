@@ -1,0 +1,61 @@
+<ion-view title="Profile">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-search"></button>
+  </ion-nav-buttons>
+
+
+  <ion-content class="has-header gem-ion-content">
+    <div class="gem-profile-media">
+      <div class="gem-profile-details">
+        <!-- <img src={{user.img}} > -->
+        <img src={{user.img}} >
+        <h3 >{{user.name}}</h3>
+        <h5>{{user.country}}, {{user.city}}</h5>
+        <div class="row ">
+          <div >
+            <h6 >Seguidores</h6>
+            <h6 >352</h6>
+          </div>
+          <div >
+            <h6 >Nivel</h6>
+            <h6 >33</h6>
+          </div>
+          <div >
+            <h6 >Progreso</h6>
+            <h6 >54</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center padding">
+      <div class="button button-balanced" ng-click="takePicture()">take picture</div>
+      <div class="button button-balanced" ng-click="getPicture()">get picture</div>
+      <div >
+        <ionic-ratings ratingsobj='ratingsObject2'></ionic-ratings>
+      </div>
+
+
+    </div>
+
+    <div class="list">
+       <a class="item item-icon-left" href="">
+         <i class="icon ion-chatbubble-working"></i>
+         Instant Message
+       </a>
+
+       <a class="item item-icon-left item-button-right" href="">
+         <i class="icon ion-social-facebook"></i>
+         Facebook Friends
+         <!--button class="button button-small button-positive uppercase"> Connect </button-->
+       </a>
+    </div>
+  </ion-content>
+
+</ion-view>

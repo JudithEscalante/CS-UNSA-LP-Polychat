@@ -128,6 +128,16 @@ angular.module('app.routes', [])
     }
 
   })
+
+  .state('buttonUpdatePhoto', {
+    url: '/buttonUpdatePhoto',
+    authenticate: true,
+    templateUrl: 'templates/buttonUpdatePhoto.html',
+    controller: 'buttonUpdatePhotoCtrl'
+  })
+
+
+
   .state('ratingModalShow', {
     url: '/ratingModalShow',
     authenticate: true,
