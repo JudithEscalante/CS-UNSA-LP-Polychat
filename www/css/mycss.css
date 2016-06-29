@@ -19,8 +19,6 @@ $dark:                            #444 !default;
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
-
-
 :root{
   --color-chat-user: #5B6ABF;
   --color-chat-toUser: #5B6ABF;
@@ -31,24 +29,25 @@ $dark:                            #444 !default;
 }
 /*tamaño estrellas */
 .ionic_ratings .icon {
-   font-size: 35px; /*tamaño estrellas*/
+   font-size: 50px;
  }
 
- .buttonCenter{
-     /*text-align: center;*/
-     float: center;
- }
+img.profile-pic {
 
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -50px;
+}
 
- #center{
-     text-align: center;*/
-     /*float: center;*/
- }
+img.profile-pic.left {
+  left: 10px;
+}
 
-
-
-
-
+img.profile-pic.right {
+  right: 10px;
+}
 
 
 .chat-bubble {
@@ -95,340 +94,9 @@ $dark:                            #444 !default;
 }
 
 
+
+
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*+++++++++++++++++++++++++++++++ POLYCHAT END +++++++++++++++++++++++++++++*/
-
-/**----------------prueba-------------------------*/
-
-
-/*
-.div-img
-{
-    background: color url('img/que-no-pare-la-fiesta.gif') others;
-}*/
-
-ion-popover-view.fit {
-  height: 163px;
-}
-
-.right{
-  float: right;
-}
-
-.button-right{
-  float:right;
-  text-align:right;
-}
-
-.popover-opacity {
-    /*background-color:rgba(255,0,0,0.5);*/
-    /*color:#fff;*/
-    background:#000;
-    opacity:0.4;
-
-}
-
-
-#profile-bg {
-        position: fixed;
-        left: 0;
-        top: -150px;
-        width: 100%;
-        /*height: 20px;*/
-        /*background-image: url("img/homero.jpg");*/
-        /*background-color: red;*/
-        /*background: color url('.../img/homero.jpg') others;*/
-        opacity: 0.7;
-        /*background: url('img/homero.jpg') no-repeat transparent;*/
-        /*background-size: 100%;*/
-        /*background-position: 50% 20%;*/
-        text-align: center;  /*primero texto*/
-      }
-
-#content {
-  position: relative;
-  margin-top: 150px;
-  background-color: #E6E6E6;
-  box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
-  padding-top: 250px; /*tamaño espacio*/
-}
-
-#profile-info {
-  position: absolute;
-  top: -95px;
-  width: 100%;
-  /*z-index: 2;*/
-  text-align: center;
-}
-#profile-name {
-  color: #444;
-  font-size: 26px;
-}
-#profile-image {
-  border-radius: 100px;
-  display: block;
-  border: 3px solid #fff;
-  width: 160px;
-  height: 160px;
-  margin: 30px auto 0;
-  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
-}
-
-
-
-#profile-description {
-  font-size: 15px;
-  color: #888;
-}
-#profile-description a {
-  color: #888;
-}
-
-
-.list-item-content {
-  padding: 5px;
-}
-
-.list-item {
-  color: #666666;
-}
-
-.post {
-  color: #444;
-}
-
-.post-time {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  font-size: 11px;
-  color: #888;
-}
-
-.post-profile-image {
-  display: inline-block;
-  vertical-align: top;
-  width: 48px;
-  height: 48px;
-  margin-right: 10px;
-}
-.post-options {
-  position: absolute;
-  font-size: 16px;
-  right: 5px;
-  bottom: 5px;
-  color: #888;
-}
-
-
-/*------------------fin prueba-------------------------*/
-
-
-/*------------------ prueba2-------------------------*/
-
-/*body {
-  cursor: url('http://ionicframework.com/img/finger.png'), auto;
-}*/
-
-/* allows the bar-footer to be elastic /*
-/* optionally set a max-height */
-/* maxlength on the textarea will prevent /*
-/* it from getting too large also */
-.bar-footer {
-  overflow: visible !important;
-}
-
-.bar-footer textarea {
-  resize: none;
-  height: 25px;
-}
-
-/* fixes an ios bug bear */
-button.ion-android-send {
-  padding-top: 2px;
-}
-
-/* add this to keep your footer buttons down
-at the bottom as the textarea resizes */
-.footer-btn-wrap {
-  position: relative;
-  height: 100%;
-  width: 50px;
-  top: 7px;
-}
-
-.footer-btn {
-  position: absolute !important;
-  bottom: 0;
-}
-
-img.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: relative;
-  bottom: 10px;
-}
-
-img.profile-pic.left {
-  left: 80px;
-  top: 60px;
-}
-
-img.profile-pic.right {
-  right: 80px;
-  top: 60px;
-}
-
-.ion-email {
-  float: right;
-  font-size: 32px;
-  vertical-align: middle;
-}
-
-.message {
-  font-size: 14px;
-}
-
-.message-detail {
-  white-space: nowrap;
-  font-size: 14px;
-}
-
-.bar.item-input-inset .item-input-wrapper input {
-  width: 100% !important;
-}
-
-.message-wrapper {
-  position: relative;
-}
-
-.message-wrapper:last-child {
-  margin-bottom: 10px;
-}
-
-.chat-bubble {
-  border-radius: 5px;
-  display: inline-block;
-  padding: 10px 18px;
-  position: relative;
-  margin: 10px;
-  max-width: 80%;
-}
-
-.chat-bubble:before {
-  content: "\00a0";
-  display: block;
-  height: 16px;
-  width: 9px;
-  position: absolute;
-  bottom: -7.5px;
-}
-
-.chat-bubble.left {
-  background-color: #e6e5eb;
-  float: left;
-  margin-left: 55px;
-}
-
-.chat-bubble.left:before {
-  background-color: #e6e5eb;
-  left: 10px;
-  -webkit-transform: rotate(70deg) skew(5deg);
-}
-
-.chat-bubble.right {
-  background-color: #158ffe;
-  color: #fff;
-  float: right;
-  margin-right: 55px;
-}
-
-.chat-bubble.right:before {
-  background-color: #158ffe;
-  right: 10px;
-  -webkit-transform: rotate(118deg) skew(-5deg);
-}
-
-.chat-bubble.right a.autolinker {
-  color: #fff;
-  font-weight: bold;
-}
-
-.user-messages-top-icon {
-  font-size: 28px;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: -3px;
-  right: 5px;
-}
-
-.msg-header-username {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: -3px;
-}
-
-input, textarea, .item-input, .item-input-wrapper {
-  background-color: #f4f4f4 !important;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.cf {
-  clear: both !important;
-}
-
-a.autolinker {
-  color: #3b88c3;
-  text-decoration: none;
-}
-
-/* loading */
-.loader-center {
-  height: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.loader .ion-loading-c {
-  font-size: 64px;
-}
-/*------------------fin prueba-------------------------*/
-
-
-
-
-
 
 @import "css/myionic.app.css";

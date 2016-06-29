@@ -90,10 +90,21 @@ angular.module('app.routes', [])
 
   .state('signup', {
     url: '/signup',
-    authenticate: false,
+    authenticate: true,
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl'
   })
+
+
+
+  .state('extraData', {
+    url: '/extraData',
+    authenticate: true,
+    templateUrl: 'templates/extraData.html',
+    controller: 'extraDataCtrl'
+
+  })
+
 
   .state('account', {
     url: '/account',
@@ -126,26 +137,38 @@ angular.module('app.routes', [])
     params: {
       contact_id : null
     }
-
+  })
+.state('contactProfile', {
+    url: '/contactProfile',
+    authenticate: true,
+    templateUrl: 'templates/contactProfile.html',
+    controller: 'contactProfileCtrl',
+    params: {
+      contactId:null,
+      contactName:null
+    }
   })
 
-  .state('buttonUpdatePhoto', {
-    url: '/buttonUpdatePhoto',
+.state('personalConversation', {
+    url: '/personalConversation',
     authenticate: true,
-    templateUrl: 'templates/buttonUpdatePhoto.html',
-    controller: 'buttonUpdatePhotoCtrl'
-  })
-
-
-
-  .state('ratingPopover', {
-    url: '/ratingPopover',
+    templateUrl: 'templates/personalConversation.html',
+    controller: 'personalConversationCtrl',
+    params: {
+      conver_id : null,
+      my_mess_id: null,
+      contact_mess_id: null,
+      contact_id: null
+    }
+})
+  .state('ratingModalShow', {
+    url: '/ratingModalShow',
     authenticate: true,
-    templateUrl: 'templates/ratingPopover.html',
-    controller: 'ratingPopoverCtrl',
-    // params: {
-    //   rating : 0
-    // }
+    templateUrl: 'templates/ratingModalShow.html',
+    //controller: 'ratingModalShowCtrl',
+    params: {
+      rating : 0
+    }
 
   })
 

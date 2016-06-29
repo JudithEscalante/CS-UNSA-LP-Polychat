@@ -13,7 +13,8 @@ angular.module('app', ['ionic', 'app.controllers',
 
     //.constant & .values GLOBALES
       .constant('cfg', {
-        firebase_url: 'https://jn6h.firebaseio.com/gdgguadalajara/codelab/'
+        //firebase_url: 'https://jn6h.firebaseio.com/gdgguadalajara/codelab/'
+        firebase_url: 'https://radiant-fire-9029.firebaseio.com'
         //firebase_url: 'https://polychatcsunsa.firebaseio.com/'
       })
       .value('userPrincipal',{
@@ -24,13 +25,17 @@ angular.module('app', ['ionic', 'app.controllers',
           img:'img/homero.jpg',
           country: 'constantinopla',
           city: 'los olvidados',
-          rating: '3'
+          rating: '4'
       })
       .value('notificationsTabs',{
-          notice: 0 ,
+          notice: '3',
           friendRequests: '3',
           contacts: '3',
           chatRoom: '3'
+      })
+      .value('userId',{
+        id:'',
+        data:''
       })
 
 

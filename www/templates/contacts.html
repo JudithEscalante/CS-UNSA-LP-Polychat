@@ -13,7 +13,7 @@
         <ion-list  show-delete="data.showDelete" >
             <!--item avatar-->
             <ion-item ng-repeat="friend in friendslist" friend="friend"
-                      class="item item-avatar item-remove-animate item-button-right" ng-class="friend.letter? 'item-divider':''">
+                      class="item item-avatar item-remove-animate item-button-right">
                   <img src={{friend.img}}>
                   <h2>{{friend.name}}</h2>
                   <p>{{friend.country}}, {{friend.city}} </p>
