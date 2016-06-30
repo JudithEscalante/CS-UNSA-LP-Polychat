@@ -11,6 +11,7 @@
                <ion-item class="item item-avatar-left" ng-if="message.user_name != user.name">
                   <img ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
                     <div class="chat-bubble left">
+                        <span class="bold">{{message.user_name}}</span>
                         <div class="message"> {{message.content}}</div>
                         <div class="message-detail">
                             <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
@@ -24,6 +25,7 @@
                <ion-item class="item item-avatar-right" ng-if="message.user_name == user.name">
                    <img ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
                     <div class="chat-bubble right">
+                      <span class="bold">{{message.user_name}}</span>
                         <div class="message">{{message.content}}</div>
                         <div class="message-detail">
                             <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
@@ -41,7 +43,7 @@
             <label class="item-input-wrapper" >
                 <input type="text" placeholder="Type your fuck@#@#@@! message" ng-model="message">
             </label>
-            <button class=" button button-positive icon ion-android-send footer-btn"
+            <button class=" button button-positive icon ion-android-send "
                     ng-click="pushMessage()" ng-disabled="!message || message === ''" ></button>
       </ion-footer-bar>
     <!--end button SEND-->

@@ -12,17 +12,17 @@
     <ion-content >
         <ion-list  show-delete="data.showDelete" >
             <!--item avatar-->
-            <ion-item ng-repeat="friend in friendslist" friend="friend"
+            <ion-item ng-repeat="friend in friendsList" friend="friend"
                       class="item item-avatar item-remove-animate item-button-right">
-                  <img src={{friend.img}}>
-                  <h2>{{friend.name}}</h2>
-                  <p>{{friend.country}}, {{friend.city}} </p>
+                  <img src='img/avatar.jpg'>
+                  <h2>{{friend.contact_name}}</h2>
+                  <!--<p>{{friend.country}}, {{friend.city}} </p>-->
                   <ion-delete-button class="ion-minus-circled"
                                      ng-click="deleteFriendButton(friend)"> </ion-delete-button>
-                  <button class="button button-positive icon ion-android-chat"
+                  <!--<button class="button button-positive icon ion-android-chat"
                           ng-click="sendMessage(friend)"> </button>
                   <ion-option-button class="button button-positive icon ion-android-settings"
-                                     ng-click="editFriendButton(item)"></ion-option-button>
+                                     ng-click="editFriendButton(item)"></ion-option-button>-->
 
             </ion-item>
             <!--end item avatar-->

@@ -28,14 +28,18 @@ angular.module('app', ['ionic', 'app.controllers',
           rating: '4'
       })
       .value('notificationsTabs',{
-          notice: '3',
-          friendRequests: '3',
-          contacts: '3',
-          chatRoom: '3'
+          notice: 0,
+          friendRequests: 0,
+          contacts: 0,
+          chatRoom: 0,
+          messages:0
       })
       .value('userId',{
         id:'',
-        data:''
+        data:{},
+        photo:'img/user.png',
+        photoUser:'img/user.png',
+        rating:3
       })
 
 

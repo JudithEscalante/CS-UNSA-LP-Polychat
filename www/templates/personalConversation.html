@@ -9,15 +9,16 @@
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <button class="button button-icon ion-ios-star" ng-click='showConfirm()'></button>
+        <button class="button button-icon ion-ios-star" ng-click='popover.show($event)'></button>
     </ion-nav-buttons>
+
 
 
 
     <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in messages" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->
-            <ion-item class="item item-avatar-left" ng-if="message.userName == user.name">
+            <ion-item class="item item-avatar-left" ng-if="message.userName != user.name">
                <img ng-click="goProfile(message.userId,message.userName)" src="img/avatar.jpg" />
                  <div class="chat-bubble left">
                      <div class="message"> {{message.content}}</div>
@@ -49,7 +50,7 @@
             <label class="item-input-wrapper">
                 <input type="text" placeholder="Type your fuc*#~@! message" ng-model="message">
             </label>
-            <button class=" button button-positive icon ion-android-send footer-btn"
+            <button class=" button button-positive icon ion-android-send "
                     ng-click="sendMessage()" ng-disabled="!message || message === ''"></button>
       </ion-footer-bar>
     <!--end button SEND-->

@@ -1,8 +1,6 @@
 <ion-view title="Friend Requests" >
-
   <ion-content>
     <ion-list>
-
 
       <!--find -->
       <ion-item>
@@ -13,43 +11,36 @@
       </ion-item>
       <!--end find -->
 
-      <!--item divider-->
+      <!--    item divider Friend Request-->
       <div class="item item-divider">
                   Friend Request.
       </div>
-      <!--item divider-->
-
-      <!--item avatar-->
-      <ion-item class="item item-avatar item-button-right" ng-repeat="stranger in strangerslist | filter:inputfind.filterUser">
-            <img src={{stranger.img}}>
-            <h2>{{stranger.name}}   </h2>
-            <p>{{stranger.country}}, {{stranger.city}} </p>
-            <button class="button button-positive icon ion-android-contacts"></button>
-
+      <ion-item class=" item item-avatar item-button-right" ng-repeat="stranger in strangersList | filter:inputfind.filterUser">
+        <img src='img/avatar.jpg'>
+        <h2>{{stranger.contact_name}}</h2>
+        <!--<p>{{stranger.country}}, {{stranger.city}} </p>-->
+        <div>
+          <button class="button button-positive " ng-click="confirm(stranger.contact_id,stranger.contact_name)">Confirmar</button>
+          <button class="button button-positive " ng-click="delete()">Rechazar</button>
+        </div>
       </ion-item>
-      <!--end item avatar-->
+      <!-- end item divider Friend Request-->
 
 
-      <!--item divider-->
+      <!--  People you may know.
       <div class="item item-divider">
                   People you may know.
       </div>
-      <!--item divider-->
 
-      <!--item avatar-->
       <ion-item class="item item-avatar item-button-right" ng-repeat="friendRequest in friendRequestslist | filter:inputfind.filterUser">
           <img src={{friendRequest.img}}>
           <h2>{{friendRequest.name}}   </h2>
           <p>{{friendRequest.country}}, {{friendRequest.city}} </p>
-          <button class="button button-positive icon ion-android-person-add" ng-click="addFriend(friendRequest)"></button>
+          <button class="button button-positive icon ion-android-person-add" ng-click="addFriend()"></button>
 
-      </ion-item>
-      <!--end item avatar-->
+      </ion-item>-->
 
-
+      <!--  end People you may know-->
     </ion-list>
   </ion-conten>
-
-
-
 </ion-view>

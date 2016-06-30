@@ -73,6 +73,12 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('buttonUpdatePhoto', {
+    url: '/buttonUpdatePhoto',
+    authenticate: true,
+    templateUrl: 'templates/buttonUpdatePhoto.html',
+    controller: 'buttonUpdatePhotoCtrl'
+  })
 
 
   .state('login', {
@@ -103,6 +109,13 @@ angular.module('app.routes', [])
     templateUrl: 'templates/extraData.html',
     controller: 'extraDataCtrl'
 
+  })
+
+  .state('extraDataFacebook',{
+    url:'/extraDataFacebook',
+    authentica:true,
+    templateUrl:'templates/extraDataFacebook.html',
+    controller:'extraDataFacebookCtrl'
   })
 
 
@@ -170,6 +183,26 @@ angular.module('app.routes', [])
       rating : 0
     }
 
+  })
+  .state('ratingPopover', {
+    url: '/ratingPopover',
+    authenticate: true,
+    templateUrl: 'templates/ratingPopover.html',
+    controller: 'ratingPopoverCtrl'
+  })
+
+
+
+
+  .state('tabsController.messages', {
+    url: '/messages',
+    authenticate: false,
+    views: {
+      'messages-tab': {
+        templateUrl: 'templates/messages.html',
+        controller: 'messagesCtrl'
+      }
+    }
   })
 
 
