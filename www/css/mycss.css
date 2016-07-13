@@ -73,9 +73,9 @@ $dark:                            #444 !default;
 }
 
 .chat-bubble.left:before {
-  background-color: var(--color-chat-user);
-  left: 10px;
-  -webkit-transform: rotate(70deg) skew(5deg);
+  /*background-color: var(--color-chat-user);*/
+  /*left: 10px;*/
+  /*-webkit-transform: rotate(70deg) skew(5deg);*/
 }
 
 .chat-bubble.right {
@@ -86,9 +86,9 @@ $dark:                            #444 !default;
 }
 
 .chat-bubble.right:before {
-  background-color: var(--color-chat-toUser);
-  right: 10px;
-  -webkit-transform: rotate(118deg) skew(-5deg);
+  /*background-color: var(--color-chat-toUser);*/
+  /*right: 10px;*/
+  /*-webkit-transform: rotate(118deg) skew(-5deg);*/
 }
 
 
@@ -263,12 +263,12 @@ img.profile-pic {
 
 img.profile-pic.left {
   left: 20px;
-  top: 60px;
+  top: 35px;
 }
 
 img.profile-pic.right {
   right: 20px;
-  top: 60px;
+  top: 35px;
 }
 
 .ion-email {
