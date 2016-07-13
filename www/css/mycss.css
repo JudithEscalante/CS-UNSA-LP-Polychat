@@ -271,6 +271,52 @@ img.profile-pic.right {
   top: 35px;
 }
 
+
+
+img.pic-message-personal {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 10px;
+}
+
+img.pic-message-personal.left {
+  left: 20px;
+  top: 25px;
+}
+
+img.pic-message-personal.right {
+  right: 20px;
+  top: 25px;
+}
+
+
+
+img.pic-message-global {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 10px;
+}
+
+img.pic-message-global.left {
+  left: 20px;
+  top: 35px;
+}
+
+img.pic-message-global.right {
+  right: 20px;
+  top: 35px;
+}
+
+
+
+
+
+
+
 .ion-email {
   float: right;
   font-size: 32px;

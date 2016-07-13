@@ -9,7 +9,7 @@
 
               <!--   CHAT LEFT - Receiver - otros-->
                <ion-item class="item item-avatar-left" ng-if="message.user_name != user.name">
-                  <img class="profile-pic left" ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
+                  <img class="pic-message-global left" ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
                     <div class="chat-bubble left">
                         <span class="bold">{{message.user_name}}</span>
                         <div class="message"> {{message.content}}</div>
@@ -23,7 +23,7 @@
 
                <!--   CHAT RIGHT - Sender - yo-->
                <ion-item class="item item-avatar-right" ng-if="message.user_name == user.name">
-                   <img class="profile-pic right" ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
+                   <img class="pic-message-global right" ng-click="goChat(message.user_id,message.user_name)" src="img/avatar.jpg" />
                     <div class="chat-bubble right">
                       <span class="bold">{{message.user_name}}</span>
                         <div class="message">{{message.content}}</div>

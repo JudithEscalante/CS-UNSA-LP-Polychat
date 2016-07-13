@@ -830,7 +830,7 @@ angular.module('app.controllers', [])
   };
 
 
-
+  // ERRROR nombre con quien hablo
   $scope.user = userId.data;
 
   var conver_id = $state.params.conver_id;
