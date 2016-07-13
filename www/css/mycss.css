@@ -262,12 +262,12 @@ img.profile-pic {
 }
 
 img.profile-pic.left {
-  left: 80px;
+  left: 20px;
   top: 60px;
 }
 
 img.profile-pic.right {
-  right: 80px;
+  right: 20px;
   top: 60px;
 }
 
