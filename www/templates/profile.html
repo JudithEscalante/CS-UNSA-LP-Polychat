@@ -30,7 +30,7 @@
 
     <div class="list">
 
-  
+
     <label class="item item-input">
     <span class="input-label">Edad</span>
     <input type="number" ng-model="age">
@@ -52,6 +52,11 @@
     <div class="item item-divider">Lenguajes de interés</div>
     <!--<a class="item">Inglés</a>-->
     <a class="item" ng-repeat="lan in obj_lan">{{ lan }}</a>
+
+    <div class="item item-divider">Configuraciones</div>
+    <!--<a class="item">Inglés</a>-->
+    <a class="item" ng-click="logout()">Logout</a>
+
 
     </div>
 

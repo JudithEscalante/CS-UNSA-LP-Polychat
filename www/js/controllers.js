@@ -244,6 +244,15 @@ angular.module('app.controllers', [])
 
 
 
+  $scope.logout = function(){
+    Ref.unauth();
+    console.log("logout complete!");
+    userId.id = '';
+    userId.data =  {};
+    userId.photo = 'img/user.png';
+    $state.go('login');
+  };
+
 
 })
 
