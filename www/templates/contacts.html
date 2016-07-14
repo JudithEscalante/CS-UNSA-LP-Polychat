@@ -14,7 +14,7 @@
             <!--item avatar-->
             <ion-item ng-repeat="friend in friendsList" friend="friend"
                       class="item item-avatar item-remove-animate item-button-right">
-                  <img src='img/avatar.jpg'>
+                  <img src={{friend.contact_photo}}>
                   <h2>{{friend.contact_name}}</h2>
                   <!--<p>{{friend.country}}, {{friend.city}} </p>-->
                   <ion-delete-button class="ion-minus-circled"

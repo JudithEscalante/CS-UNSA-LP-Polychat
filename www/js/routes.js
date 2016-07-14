@@ -158,7 +158,8 @@ angular.module('app.routes', [])
     controller: 'contactProfileCtrl',
     params: {
       contactId:null,
-      contactName:null
+      contactName:null,
+      contactPhoto:null
     }
   })
 

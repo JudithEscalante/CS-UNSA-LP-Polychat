@@ -22,7 +22,7 @@ angular.module('app.services', [])
 .factory('Ref', function($firebaseAuth, cfg) {
     return  new Firebase(cfg.firebase_url);
   })
-.factory('Auth', function($firebaseAuth, cfg , Ref) {
+.factory('Auth', function($firebaseAuth,cfg,Ref) {
     return $firebaseAuth(Ref);
   })
 //end- conectandon con FIREBASE

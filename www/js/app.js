@@ -14,7 +14,9 @@ angular.module('app', ['ionic', 'app.controllers',
     //.constant & .values GLOBALES
       .constant('cfg', {
         //firebase_url: 'https://jn6h.firebaseio.com/gdgguadalajara/codelab/'
-        firebase_url: 'https://radiant-fire-9029.firebaseio.com'
+        firebase_url: 'https://radiant-fire-9029.firebaseio.com',
+        //firebase_url: 'https://polychatv1-60486.firebaseio.com',
+        auth_url: 'polychatv1-60486.firebaseapp.com'
         //firebase_url: 'https://polychatcsunsa.firebaseio.com/'
       })
       .value('userPrincipal',{

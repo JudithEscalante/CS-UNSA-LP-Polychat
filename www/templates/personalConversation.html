@@ -1,5 +1,6 @@
+
 <ion-view cache-view="true"
-          view-title="{{user.name}}">
+          view-title="Conversacion Privada">
           <!-- view-title="<div class=' icon ion-chatbubble  user-messages-top-icon
                       msg-header-username'> {{user.name}} </div>
                       "> -->
@@ -15,31 +16,34 @@
 
 
 
-    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="scrollBottom">
+    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in messages" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->
             <ion-item class="item item-avatar-left" ng-if="message.userName != user.name">
-               <img class="pic-message-personal left" ng-click="goProfile(message.userId,message.userName)" src="img/avatar.jpg" />
+               <img class="pic-message-global left" ng-click="goChat(message.user_id,message.user_name,message.user_photo)"
+                     src={{message.userPhoto}} />
                  <div class="chat-bubble left">
+                   <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
                      <div class="message"> {{message.content}}</div>
                      <div class="message-detail">
-                         <span ng-click="" class="bold">8:40am</span>
-                         <span am-time-ago="time"></span>
-                         <!--<span ng-click="" class="bold">{{message.date}}</span>
+                         <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
                          <span am-time-ago="time"></span>-->
                      </div>
                  </div>
             </ion-item>
+
+
             <!--end CHAT LEFT - Receiver - otros-->
 
             <!--   CHAT RIGHT - Sender - yo-->
             <ion-item class="item item-avatar-right" ng-if="message.userName == user.name">
-                <img class="pic-message-personal right" ng-click="goProfile(message.userId,message.userName)" src="img/avatar.jpg" />
+                <img class="pic-message-personal right" ng-click="goProfile(message.userId,message.userName)"
+                     src={{photo}} />
                  <div class="chat-bubble right">
+                    <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
                      <div class="message">{{message.content}}</div>
                      <div class="message-detail">
-                         <!--<span ng-click="" class="bold">{{message.date}}</span>
-                         <span am-time-ago="time"></span> -->
+                       <div class="ion-checkmark-circled">visto</div>
                      </div>
                  </ion-item>
             </div>

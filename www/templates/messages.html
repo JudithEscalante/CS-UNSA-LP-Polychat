@@ -5,20 +5,19 @@
  <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
            <div ng-repeat="mess in messages | orderBy:'sendAt':true" class="message-wrapper">
 
-              <!--   CHAT LEFT - Receiver - otros-->
+             <ion-item ng-if="mess.seen==false" class="item item-avatar"style="background-color: #B2BBEC;">
+                <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src={{mess.photo}} >
+                <div class="message-detail"><span class="bold">{{ mess.contact_name}}</span></div>
+                <div class="item-text-wrap message"> {{ mess.content}}</div>
+             </ion-item>
 
-              <ion-item class="item item-avatar" style="background-color: red;">
 
-                  <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src="img/homero.jpg"  >
-                  <div class=" message-detail">
-                      <span class="bold">{{ mess.contact_name}}</span>
-                      <!-- <span am-time-ago={{time}}></span> -->
-                  </div>
+             <ion-item ng-if="mess.seen==true" class="item item-avatar">
+                <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src={{mess.photo}} >
+                <div class="message-detail"><span class="bold">{{ mess.contact_name}}</span></div>
+                <div class="item-text-wrap message"> {{ mess.content}}</div>
+             </ion-item>
 
-                  <div class="item-text-wrap message"> {{ mess.content}}</div>
-
-               </ion-item>
-               <!--end CHAT LEFT - Receiver - otros-->
 
         </div>
     </ion-content>

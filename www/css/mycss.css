@@ -76,7 +76,7 @@ $dark:                            #444 !default;
 }
 
 .chat-bubble.left {
-  background-color: var(--color-chat-user);
+  background-color: #818ED6;
   float: left;
   margin-left: 5px;
 }

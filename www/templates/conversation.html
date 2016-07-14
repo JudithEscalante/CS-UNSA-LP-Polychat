@@ -14,7 +14,7 @@
 
 
 
-    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="scrollBottom">
+    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in allmessage" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->
             <ion-item class="item item-avatar-left" ng-if="message.name == userNameReceiver.name">
@@ -23,8 +23,8 @@
                    <span class="bold">{{message.userName}}</span>
                      <div class="message"> {{message.body}}</div>
                      <div class="message-detail">
-                         <!-- <span ng-click="" class="bold">{{message.date}}</span>
-                         <span am-time-ago="time"></span>--> <!--timer-->
+                         <span ng-click="" class="bold">{{message.date}}</span>
+                         <span am-time-ago="time"></span><!--timer-->
                      </div>
                  </div>
             </ion-item>

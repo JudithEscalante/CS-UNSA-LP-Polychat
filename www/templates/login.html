@@ -1,46 +1,48 @@
 <ion-view title="Login" >
     <ion-content padding="true" class="has-header">
 
-        <!--         Login    -->
-        <form name="form" class="list ">
-            <ion-list>
-                <label class="item item-input " >
-                    <span class="input-label">E-mail</span>
-                    <input type="text"  ng-model="user.email" placeholder="correo@gmail.com"
-                            ng-minlength="5" ng-maxlength="40">
-                </label>
-                <label class="item item-input ">
-                    <span class="input-label">Password</span>
-                    <input name="textpass" type="password" ng-model="user.password" placeholder="************"
-                            ng-minlength="4" ng-maxlength="10">
-                </label>
-
-                <div class="spacer" style="width: 20px; height: 30px;"></div>
-                <label ng-show="form.textpass.$error.minlength">*Password muy corto</label>
-                <label ng-show="form.textpass.$error.maxlength">*Password muy largo</label>
-
-            </ion-list>
+      <form name="form" class="list ">
+          <ion-list>
+              <label class="item item-input " >
+                  <span class="input-label">E-mail</span>
+                  <input name="textcorreo" type="text"  ng-model="user.email" placeholder="correo@gmail.com"
+                          ng-minlength="5" ng-maxlength="30">
+              </label>
 
 
+              <label class="item item-input ">
+                  <span class="input-label">Password</span>
+                  <input name="textpass" type="password" ng-model="user.password" placeholder="************"
+                          ng-minlength="4" ng-maxlength="10">
+              </label>
+              <div class="spacer" style="width: 20px; height: 30px;"></div>
 
-            <div class="spacer" style="width: 285px; height: 114px;"></div>
+              <label ng-show="form.textpass.$error.minlength">*Password muy corto</br></label>
+              <label ng-show="form.textpass.$error.maxlength">*Password muy largo</br></label>
+              <label ng-show="form.textcorreo.$error.minlength">*correo invalido</br></label>
+              <label ng-show="form.textcorreo.$error.maxlength">*correo muy largo</br></label>
 
-                <!-- validador de login -->
-                  <!--ui-sref="tabsController.notice"-->
-                  <a  class=" button button-positive  button-block "
-                      ng-click="login(user)" >Log in</a>
-                <!-- end validador de login -->
+          </ion-list>
 
 
-                <!-- validador de sing-up -->
-                  <a  ui-sref="signup"
-                      class=" button button-positive  button-block button-clear "
-                      >Or create an account</a>     <!-- cambiar modal.show() -->
-                <!-- end validador de sing-up -->
 
-        </form>
-        <!--  end   Login    -->
+          <div class="spacer" style="width: 285px; height: 114px;"></div>
 
+              <!-- validador de login -->
+                <!--ui-sref="tabsController.notice"-->
+                <a  class=" button button-positive  button-block "
+                    ng-click="login(user)" >Log in</a>
+              <!-- end validador de login -->
+
+
+              <!-- validador de sing-up -->
+                <a  ui-sref="signup"
+                    class=" button button-positive  button-block button-clear "
+                    >Or create an account</a>     <!-- cambiar modal.show() -->
+              <!-- end validador de sing-up -->
+
+      </form>
+      <!--  end   Login    -->
 
         <div  class=" button-bar ">
             <!--

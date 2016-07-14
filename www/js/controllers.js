@@ -14,8 +14,9 @@ angular.module('app.controllers', [])
     //$scope.chatRoom = 4;
     //$scope.friendRequests = 0;
 
+    /*
     var user_not_ref = Ref.child('usersTest/'+userId.id+'/notifications');
-    user_not_ref.on('child_added',function(data){
+    user_not_ref.on('value',function(data){
       console.log('New Notification!');
       console.log($scope.notification.friendRequests);
       $scope.notification.friendRequests = $scope.notification.friendRequests + 1;
@@ -24,13 +25,13 @@ angular.module('app.controllers', [])
 
     var user_mess_ref = Ref.child('usersTest/'+userId.id+'/last_messages');
 
-    user_mess_ref.on('child_added',function(data){
+    user_mess_ref.on('value',function(data){
       console.log('New message!');
       console.log($scope.notification.messages);
       $scope.notification.messages = $scope.notification.messages + 1;
       console.log($scope.notification.messages);
     });
-
+  */
 
 
 })
@@ -52,6 +53,10 @@ angular.module('app.controllers', [])
     console.log("M1 id: "+m1_id);
     console.log("M2 id: "+m2_id);
     console.log("Contact id: "+contactId);
+
+    var change_ref = Ref.child('usersTest/'+userId.id+'/last_messages/'+contactId);
+
+    change_ref.update({seen:true});
 
 
     $state.go('personalConversation',{
@@ -78,13 +83,14 @@ angular.module('app.controllers', [])
 
     //$scope.goProfile = function(id,name){};
 
-    $scope.goProfile = function(id,name){
+    $scope.goProfile = function(id,name,photo){
 
     if(userId.id != id){
 
       $state.go('contactProfile',{
         contactId:id,
-        contactName:name
+        contactName:name,
+        contactPhoto:photo
       });
     }
     };
@@ -173,7 +179,9 @@ angular.module('app.controllers', [])
                      sourceType: 1
     };
     Camera.getPicture(options).then(function(imageData) {
-       $scope.photo = imageData;
+       //$scope.photo = imageData;
+       userId.photo = imageData;
+       $scope.photo = userId.photo;
     }, function(err) {
        console.log(err);
     });
@@ -188,7 +196,9 @@ angular.module('app.controllers', [])
      };
 
      Camera.getPicture(options).then(function(imageData) {
-        $scope.photo = imageData;
+        //$scope.photo = imageData;
+        userId.photo = imageData;
+        $scope.photo = userId.photo;
      }, function(err) {
         console.log(err);
      });
@@ -257,10 +267,9 @@ angular.module('app.controllers', [])
 })
 
 
-.controller('loginCtrl', function($scope, Auth, Ref ,$rootScope, $state, $ionicModal, $ionicLoading,userId)
-{
+.controller('loginCtrl', function($scope, Auth, Ref ,$rootScope, $state, $ionicModal, $ionicLoading,userId) {
 
-   $scope.login = function(user){
+   $scope.login = function(user) {
        if (user && user.email && user.password) {
          $ionicLoading.show({ template: 'Loging in..' });
          Auth.$authWithPassword({
@@ -499,7 +508,7 @@ angular.module('app.controllers', [])
   //var contact_ref_contacts = Ref.child('usersTest/'+contactId+'/contacts/'+curr.user_id);
   //var my_ref_not = Ref.child('usersTest/'+curr.user_id+'/notifications/'+contactId);
 
-  $scope.confirm = function(id,name){
+  $scope.confirm = function(id,name,photo){
 
     var my_ref_contacts = Ref.child('usersTest/'+curr.user_id+'/contacts/'+id);
     var contact_ref_contacts = Ref.child('usersTest/'+id+'/contacts/'+curr.user_id);
@@ -507,12 +516,14 @@ angular.module('app.controllers', [])
 
     my_ref_contacts.set({
       contact_id : id,
-      contact_name : name
+      contact_name : name,
+      contact_photo : photo
     });
 
     contact_ref_contacts.set({
       contact_id : curr.user_id,
-      contact_name : curr.name
+      contact_name : curr.name,
+      contact_photo : userId.photo
     })
 
     my_ref_not.set(null);
@@ -528,14 +539,16 @@ angular.module('app.controllers', [])
 
 
 .controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
-  //mensaje visto? true or false
-  $scope.visto=true;
-
 
   //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
+  //$ionicScrollDelegate.scrollBottom();
   $scope.user = userId.data;
+  $scope.photo = userId.photo;
   var chatRef = Ref.child('chatTest');
   var user_ref = Ref.child('usersTest');
+
+  // $scope.country = "pe";
+  // $scope.country = userId.data.country.toLowerCase();
 
   $scope.messages = $firebaseArray(chatRef);
 
@@ -549,18 +562,21 @@ angular.module('app.controllers', [])
 
   $scope.pushMessage = function(){
 
+    console.log(userId.data.country);
     chatRef.push().set({
       user_name: userId.data.name,
       user_id: userId.data.user_id,
-      content: $scope.message
+      country: userId.data.country.toLowerCase(),
+      content: $scope.message,
+      user_photo : $scope.photo
     });
 
     $scope.message = '';
-    $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
+    $ionicScrollDelegate.scrollBottom();
 
   };
 
-  $scope.goChat = function(us_id,us_name){
+  $scope.goChat = function(us_id,us_name,us_photo){
     var curr = userId.data;
     var my_ref = Ref.child('usersTest/'+userId.id+'/last_messages');
 
@@ -598,7 +614,8 @@ angular.module('app.controllers', [])
           messId1 : myMessRef.key(),
           messId2 : contactMessRef.key(),
           contact_name : us_name,
-          contact_id : us_id
+          contact_id : us_id,
+          photo : userId.photo
           });
 
           contactMessRef.set({
@@ -606,7 +623,8 @@ angular.module('app.controllers', [])
           messId1 : contactMessRef.key(),
           messId2 : myMessRef.key(),
           contact_name : curr.name,
-          contact_id : curr.user_id
+          contact_id : curr.user_id,
+          photo: us_photo
           });
 
           $state.go('personalConversation',{
@@ -684,6 +702,9 @@ angular.module('app.controllers', [])
 
   var contactId = $state.params.contactId;
   var contactName = $state.params.contactName;
+  var contactPhoto = $state.params.contactPhoto;
+
+  console.log("Contact photo: ",contactPhoto);
 
   console.log('Contact profile controller');
   console.log('contact id',contactId);
@@ -698,7 +719,8 @@ angular.module('app.controllers', [])
   user_ref = Ref.child('usersTest/'+contactId);
   var existing_conver_ref = my_ref.child(contactId);
 
-  $scope.photo = userId.photoUser;
+  //$scope.photo = userId.photoUser;
+  $scope.photo = contactPhoto;
   $scope.backgroundPicture = 'img/fondo2.jpg';
 
 
@@ -771,7 +793,8 @@ angular.module('app.controllers', [])
     //console.log("We're gonna add a friend here...");
     contact_ref_not.set({
       contact_id : curr.user_id,
-      contact_name : curr.name
+      contact_name : curr.name,
+      contact_photo : userId.photo
     });
   };
 
@@ -807,12 +830,14 @@ angular.module('app.controllers', [])
     //console.log("Here we can accept a request");
     my_ref_contacts.set({
       contact_id : contactId,
-      contact_name : contactName
+      contact_name : contactName,
+      contact_photo: contactPhoto
     });
 
     contact_ref_contacts.set({
       contact_id : curr.user_id,
-      contact_name : curr.name
+      contact_name : curr.name,
+      contact_photo: userId.photo
     })
 
     my_ref_not.set(null);
@@ -843,8 +868,10 @@ angular.module('app.controllers', [])
   };
 
 
+
   // ERRROR nombre con quien hablo
   $scope.user = userId.data;
+  $scope.photo = userId.photo;
 
   var conver_id = $state.params.conver_id;
   var my_mess_id = $state.params.my_mess_id;
@@ -869,36 +896,41 @@ angular.module('app.controllers', [])
 
   $scope.sendMessage = function(){
 
+    $ionicScrollDelegate.scrollBottom();
 
     conver_ref.push().set({
           userName: $scope.user.name,
           userId: $scope.user.user_id,
-          content: $scope.message
+          content: $scope.message,
+          userPhoto: $scope.photo,
+          country: $scope.user.country.toLowerCase()
+
     });
 
     my_ref.update({
           content:$scope.message,
-          sendAt: new Date()
+          sendAt: new Date(),
+          seen:false
     });
 
     contact_ref.update({
           content:$scope.message,
-          sendAt: new Date()
+          sendAt: new Date(),
+          seen:false
     });
 
     $scope.message = '';
-
-    $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
   };
 
-  $scope.goProfile = function(id,name){
+  $scope.goProfile = function(id,name,photo){
 
     if($scope.user.user_id != id){
 
       console.log(id);
       $state.go('contactProfile',{
-        contactId:id,
-        contactName:name
+        contactId: id,
+        contactName: name,
+        contactPhoto: photo
       });
 
     }
@@ -973,6 +1005,6 @@ angular.module('app.controllers', [])
                                 }
         );
       $scope.messageInput='';
-      $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
+      $ionicScrollDelegate.scrollBottom(true);
     };
 })
