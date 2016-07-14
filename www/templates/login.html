@@ -2,17 +2,26 @@
     <ion-content padding="true" class="has-header">
 
         <!--         Login    -->
-        <form  class="list ">
+        <form name="form" class="list ">
             <ion-list>
                 <label class="item item-input " >
-                    <span class="input-label">Username</span>
-                    <input type="text"  ng-model="user.email" placeholder="pollo@gmail.com" >
+                    <span class="input-label">E-mail</span>
+                    <input type="text"  ng-model="user.email" placeholder="correo@gmail.com"
+                            ng-minlength="5" ng-maxlength="40">
                 </label>
-                <label class="item item-input " >
+                <label class="item item-input ">
                     <span class="input-label">Password</span>
-                    <input type="password" ng-model="user.password" placeholder="************">
+                    <input name="textpass" type="password" ng-model="user.password" placeholder="************"
+                            ng-minlength="4" ng-maxlength="10">
                 </label>
+
+                <div class="spacer" style="width: 20px; height: 30px;"></div> 
+                <label ng-show="form.textpass.$error.minlength">*Password muy corto</label>
+                <label ng-show="form.textpass.$error.maxlength">*Password muy largo</label>
+
             </ion-list>
+
+
 
             <div class="spacer" style="width: 285px; height: 114px;"></div>
 
@@ -39,9 +48,9 @@
                  style="border-radius:20px 20px 20px 20px;"
                  class=" button button-positive  icon ion-social-googleplus "
                  ng-click="loginWithGoogle()"></a>
-            
 
-            
+
+
               <a ui-sref="tabsController.notice"
                  style="border-radius:50px 50px 50px 50px;"
                  class=" button button-positive  icon ion-social-twitter "
