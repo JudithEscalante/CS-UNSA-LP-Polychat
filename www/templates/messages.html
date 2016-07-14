@@ -7,16 +7,15 @@
 
               <!--   CHAT LEFT - Receiver - otros-->
 
-              <ion-item class="item item-avatar">
+              <ion-item class="item item-avatar" style="background-color: red;">
 
-              <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src="img/homero.jpg"  >
-
-                  <div class="message-detail">
+                  <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src="img/homero.jpg"  >
+                  <div class=" message-detail">
                       <span class="bold">{{ mess.contact_name}}</span>
                       <!-- <span am-time-ago={{time}}></span> -->
                   </div>
 
-                  <div class="message"> {{ mess.content}}</div>
+                  <div class="item-text-wrap message"> {{ mess.content}}</div>
 
                </ion-item>
                <!--end CHAT LEFT - Receiver - otros-->

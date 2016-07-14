@@ -13,11 +13,11 @@
                   <img class="pic-message-global left" ng-click="goChat(message.user_id,message.user_name)"
                         src="img/avatar.jpg" />
                     <div class="item-text-wrap  chat-bubble left">
-                        <span class="bold">{{message.user_name}}</span>
+                        <span class="bold">
+                          {{message.user_name}}
+                          <span class="flag-icon flag-icon-af "></span>
+                        </span>
                         <div class="message"> {{message.content}}</div>
-                        <div class="message-detail">
-                          <div ng-if="visto == true" class="ion-checkmark-circled">visto</div>
-                        </div>
                     </div>
                </ion-item>
                <!--end CHAT LEFT - Receiver - otros-->
@@ -26,14 +26,16 @@
                <ion-item class="item item-avatar-right" ng-if="message.user_name == user.name">
                    <img class="pic-message-global right" ng-click="goChat(message.user_id,message.user_name)"
                          src="img/avatar.jpg" />
-                    <div class="item-text-wrap  chat-bubble right">
-                      <span class="bold">{{message.user_name}}</span>
+                    <div class="chat-bubble right">
+                        <span class="bold">
+                          {{message.user_name}}
+                          <span class="flag-icon flag-icon-pe "></span>
+                        </span>
                         <div class="message">{{message.content}}</div>
                         <div class="message-detail">
-                            <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
-                            <span am-time-ago="time"></span> -->
+                          <div ng-if="visto == true" class="ion-checkmark-circled">visto</div>
                         </div>
-                    </ion-item>
+                        </ion-item>
                </div>
                <!--end CHAT RIGHT - Sender - yo-->
            </div>

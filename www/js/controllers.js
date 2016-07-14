@@ -400,7 +400,7 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].text);
+        $scope.data.nat.push($scope.natLan[i].texttoLowerCase());
       }
     }
 
@@ -409,7 +409,7 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text);
+      $scope.data.obj.push($scope.objLan[i].text.toLowerCase());
 
     }
     }
@@ -456,7 +456,7 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].text);
+        $scope.data.nat.push($scope.natLan[i].text.toLowerCase());
       }
     }
 
@@ -465,7 +465,7 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text);
+      $scope.data.obj.push($scope.objLan[i].text.toLowerCase());
 
     }
     }
@@ -529,7 +529,7 @@ angular.module('app.controllers', [])
 
 .controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
   //mensaje visto? true or false
-  $scope.visto=false;
+  $scope.visto=true;
 
 
   //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
