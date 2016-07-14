@@ -83,12 +83,13 @@ $dark:                            #444 !default;
 .chat-bubble {
   /*display: inline-block;*/
   border-radius: 15px;
+
   padding: 10px 18px;
   position: relative;
   margin: -5px; /*margen cuadrado mensaje*/
-  width: auto;
-  /*max-width: 70%;*/
-  text-align: justify;
+
+  max-width: 70%;
+  /*text-align: justify;*/
 
 }
 
@@ -346,7 +347,7 @@ img.pic-message-global.right {
 }
 
 .message-detail {
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   font-size: 14px;
 }
 

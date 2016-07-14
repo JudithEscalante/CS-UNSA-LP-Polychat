@@ -528,6 +528,8 @@ angular.module('app.controllers', [])
 
 
 .controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
+  //mensaje visto? true or false
+  $scope.visto=false;
 
 
   //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
