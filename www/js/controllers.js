@@ -257,9 +257,10 @@ angular.module('app.controllers', [])
 })
 
 
-.controller('loginCtrl', function($scope, Auth, Ref ,$rootScope, $state, $ionicModal, $ionicLoading,userId) {
+.controller('loginCtrl', function($scope, Auth, Ref ,$rootScope, $state, $ionicModal, $ionicLoading,userId)
+{
 
-   $scope.login = function(user) {
+   $scope.login = function(user){
        if (user && user.email && user.password) {
          $ionicLoading.show({ template: 'Loging in..' });
          Auth.$authWithPassword({
@@ -528,6 +529,7 @@ angular.module('app.controllers', [])
 
 .controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
 
+
   //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
   $scope.user = userId.data;
   var chatRef = Ref.child('chatTest');
@@ -552,7 +554,7 @@ angular.module('app.controllers', [])
     });
 
     $scope.message = '';
-    $ionicScrollDelegate.scrollBottom();
+    $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
 
   };
 
@@ -865,7 +867,6 @@ angular.module('app.controllers', [])
 
   $scope.sendMessage = function(){
 
-    $ionicScrollDelegate.scrollBottom();
 
     conver_ref.push().set({
           userName: $scope.user.name,
@@ -884,6 +885,8 @@ angular.module('app.controllers', [])
     });
 
     $scope.message = '';
+
+    $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
   };
 
   $scope.goProfile = function(id,name){
@@ -968,6 +971,6 @@ angular.module('app.controllers', [])
                                 }
         );
       $scope.messageInput='';
-      $ionicScrollDelegate.scrollBottom(true);
+      $ionicScrollDelegate.$getByHandle('scrollBottom').scrollBottom(true);
     };
 })
