@@ -400,7 +400,7 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].texttoLowerCase());
+        $scope.data.nat.push($scope.natLan[i].text);
       }
     }
 
@@ -409,7 +409,7 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text.toLowerCase());
+      $scope.data.obj.push($scope.objLan[i].text);
 
     }
     }
@@ -456,7 +456,7 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].text.toLowerCase());
+        $scope.data.nat.push($scope.natLan[i].text);
       }
     }
 
@@ -465,7 +465,7 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text.toLowerCase());
+      $scope.data.obj.push($scope.objLan[i].text);
 
     }
     }
