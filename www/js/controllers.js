@@ -9,31 +9,6 @@ angular.module('app.controllers', [])
       $state.go(ref);
       $scope.notification[tab]=0;
     };
-
-
-    //$scope.chatRoom = 4;
-    //$scope.friendRequests = 0;
-
-    /*
-    var user_not_ref = Ref.child('usersTest/'+userId.id+'/notifications');
-    user_not_ref.on('value',function(data){
-      console.log('New Notification!');
-      console.log($scope.notification.friendRequests);
-      $scope.notification.friendRequests = $scope.notification.friendRequests + 1;
-      console.log($scope.notification.friendRequests);
-    });
-
-    var user_mess_ref = Ref.child('usersTest/'+userId.id+'/last_messages');
-
-    user_mess_ref.on('value',function(data){
-      console.log('New message!');
-      console.log($scope.notification.messages);
-      $scope.notification.messages = $scope.notification.messages + 1;
-      console.log($scope.notification.messages);
-    });
-  */
-
-
 })
 
 
@@ -94,31 +69,6 @@ angular.module('app.controllers', [])
       });
     }
     };
-
-
-
-    /*
-    $scope.data = {
-    showDelete: false
-    };
-
-    $scope.friendslist = mydatabaseService.database();
-
-    $scope.deleteFriendButton = function(friend){
-
-    $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
-    console.log("te borre XD!");
-    };
-
-    $scope.editFriendButton = function(item){
-
-    };
-
-    $scope.sendMessage = function(objFriend){
-    $state.go('conversation',{'contact_id': objFriend.id_user });
-    console.log("contacto enviado");
-    };*/
-
 
 })
 
