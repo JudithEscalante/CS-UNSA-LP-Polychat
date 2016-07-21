@@ -20,7 +20,7 @@
        <div ng-repeat="message in messages" class="message-wrapper">
             <!--   CHAT LEFT - Receiver - otros-->
             <ion-item class="item item-avatar-left" ng-if="message.userName != user.name">
-               <img class="pic-message-global left" ng-click="goChat(message.user_id,message.user_name,message.user_photo)"
+               <img class="pic-message-global left" ng-click="goProfile(message.userId,message.userName,message.userPhoto)"
                      src={{message.userPhoto}} />
                  <div class="chat-bubble left">
                    <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
@@ -54,7 +54,7 @@
     <!--button SEND-->
       <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
             <label class="item-input-wrapper">
-                <input type="text" placeholder="Type your fuc*#~@! message" ng-model="message">
+                <input type="text" placeholder="Type your message" ng-model="message">
             </label>
             <button class=" button button-positive icon ion-android-send "
                     ng-click="sendMessage()" ng-disabled="!message || message === ''"></button>
