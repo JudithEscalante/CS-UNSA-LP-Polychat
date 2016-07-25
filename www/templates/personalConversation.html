@@ -1,6 +1,8 @@
-
-<ion-view cache-view="true"
+<ion-view  cache-view="false"
           view-title="Conversacion Privada">
+          <!-- view-title="<div class=' icon ion-chatbubble  user-messages-top-icon
+                      msg-header-username'> {{user.name}} </div>
+                      "> -->
 
     <ion-nav-buttons side="left">
       <button class="button button-icon ion-arrow-left-c" ng-click='myGoBack()'></button>
@@ -9,6 +11,8 @@
 
       </div>
     </ion-nav-buttons>
+
+
 
     <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in messages" class="message-wrapper">
@@ -36,12 +40,10 @@
                  <div class="chat-bubble right">
                     <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
                      <div class="message">{{message.content}}</div>
-                     <div class="row message-detail right ">
-                       <div class="ion-checkmark"></div>
-                       <div class="ion-checkmark"></div>
+                     <div class="message-detail">
+                       <div class="ion-checkmark-circled">visto</div>
                      </div>
                  </ion-item>
-
             </div>
             <!--end CHAT RIGHT - Sender - yo-->
        </div>

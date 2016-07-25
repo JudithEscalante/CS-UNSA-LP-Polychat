@@ -5,14 +5,23 @@ angular.module('app.controllers', [])
 .controller('tabsControllerCtrl', function($scope, $state, notificationsTabs,userId,Ref) {
 
     $scope.notification=notificationsTabs;
+    var my_ref = Ref.child('usersTest/'+userId.id+'/messages');
+    var my_replace =  Ref.child('usersTest/'+userId.id);
+
+    my_ref.on('value',function(data){
+      $scope.notification.messages = data.val();
+      //console.log('New message notification');
+      //console.log("Current num of messagges",data.val());
+    });
+
     $scope.go=function(ref,tab){
+      if(tab=='messages'){
+        console.log("Message tab");
+        my_replace.update({messages:0});
+      }
+      //$scope.notification[tab]=0;
       $state.go(ref);
-      $scope.notification[tab]=0;
     };
-
-
-
-
 })
 
 
@@ -20,6 +29,7 @@ angular.module('app.controllers', [])
 .controller('messagesCtrl', function($scope,$state,Ref,userId,$firebaseArray) {
 
    //var my_ref = getRef.getMyRef().child('last_messages');
+   console.log("Messages controller");
    var my_ref = Ref.child('usersTest/'+userId.id+'/last_messages');
    $scope.messages = $firebaseArray(my_ref);
 
@@ -48,21 +58,18 @@ angular.module('app.controllers', [])
   };
 
 
-  //insertar fecha de mensaje
-  var message_date="2016-06-22T14:47:29.689358";
-  $scope.time =  new Date(message_date);
-
-  //colocar numero de notificaciones entre comillas 0='', 1='1', 2='2',etc.
-  $scope.number_messages='2';
-
 })
 
 .controller('contactsCtrl', function($scope,$state, $ionicHistory,Ref,userId,$firebaseArray) {
+
+
   //naveganciòn...
     $ionicHistory.nextViewOptions({
      disableAnimate: false,
      disableBack: false
     });
+
+    console.log("Contacts controller");
 
     var contacts_ref = Ref.child('usersTest/'+userId.id+'/contacts');
     $scope.friendsList = $firebaseArray(contacts_ref);
@@ -80,31 +87,6 @@ angular.module('app.controllers', [])
       });
     }
     };
-
-
-
-    /*
-    $scope.data = {
-    showDelete: false
-    };
-
-    $scope.friendslist = mydatabaseService.database();
-
-    $scope.deleteFriendButton = function(friend){
-
-    $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
-    console.log("te borre XD!");
-    };
-
-    $scope.editFriendButton = function(item){
-
-    };
-
-    $scope.sendMessage = function(objFriend){
-    $state.go('conversation',{'contact_id': objFriend.id_user });
-    console.log("contacto enviado");
-    };*/
-
 
 })
 
@@ -144,6 +126,7 @@ angular.module('app.controllers', [])
 
   console.log("Profile ctrl");
   console.log("User id...",userId.id);
+  console.log("User name...",userId.data.name);
   var curr = userId.data;
   var userRef = Ref.child('usersTest/'+userId.id);
   $scope.photo = userId.photo;
@@ -241,11 +224,14 @@ angular.module('app.controllers', [])
 
 
   $scope.logout = function(){
+    console.log("Logging out");
     Ref.unauth();
-    console.log("logout complete!");
     userId.id = '';
     userId.data =  {};
     userId.photo = 'img/user.png';
+    console.log("logout complete!");
+    console.log("User id: ",userId.id);
+    console.log("User data: ",userId.data);
     $state.go('login');
   };
 
@@ -387,6 +373,7 @@ angular.module('app.controllers', [])
   $scope.data.nat = [];
   $scope.data.obj = [];
   $scope.data.user_id = userId.id;
+  $scope.data.messages = 0;
 
 
 
@@ -443,6 +430,7 @@ angular.module('app.controllers', [])
   $scope.data.nat = [];
   $scope.data.obj = [];
   $scope.data.user_id = userId.id;
+  $scope.data.messages = 0;
 
 
 
@@ -486,6 +474,8 @@ angular.module('app.controllers', [])
 
 .controller('friendRequestsCtrl', function($scope,$state,Ref,userId,$firebaseArray) {
 
+  console.log("Friend requests controller");
+
   var curr = userId.data;
   var user_not_ref = Ref.child('usersTest/'+userId.id+'/notifications');
   $scope.strangersList = $firebaseArray(user_not_ref);
@@ -524,10 +514,22 @@ angular.module('app.controllers', [])
 
 
 
-.controller('chatRoomCtrl', function($scope,$timeout,$interval,$ionicLoading ,$ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
+.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray,
+  $timeout) {
 
+  //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
+  //$ionicScrollDelegate.scrollBottom();
 
+  /*$scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
+        //console.log('CTRL - $ionicView.loaded', viewInfo, state);
+        //console.log("Page done loading...");
+        $ionicScrollDelegate.scrollBottom();
 
+  });*/
+
+  $timeout(function() {
+    $ionicScrollDelegate.scrollBottom();
+  });
 
   $scope.user = userId.data;
   $scope.photo = userId.photo;
@@ -602,7 +604,9 @@ angular.module('app.controllers', [])
           messId2 : contactMessRef.key(),
           contact_name : us_name,
           contact_id : us_id,
-          photo : userId.photo
+          photo : userId.photo,
+          in:true,
+          count:0
           });
 
           contactMessRef.set({
@@ -611,7 +615,9 @@ angular.module('app.controllers', [])
           messId2 : myMessRef.key(),
           contact_name : curr.name,
           contact_id : curr.user_id,
-          photo: us_photo
+          photo: us_photo,
+          in:false,
+          count:0
           });
 
           $state.go('personalConversation',{
@@ -627,41 +633,7 @@ angular.module('app.controllers', [])
 
     }
 
-
   };
-
-
-
-  var init=function(){
-     alert("aa");
-     $ionicScrollDelegate.scrollBottom();
-  }
-  //init();
-
-  $scope.scrollBottom = function() {
-    $ionicScrollDelegate.$getByHandle('userMessageScroll').scrollBottom();
-  };
-
-
-  $timeout(function() {
-     var x=$ionicScrollDelegate.$getByHandle('userMessageScroll');
-     console.log("beba");
-     x.scrollBottom();
-   }, 0);
-
-
-
-
-    $timeout(function() {
-    $scope.MyCtrl.showContent = true;
-    scrollDelegate = $ionicScrollDelegate.$getByHandle('userMessageScroll').scrollBottom();
-      }, 100);
-
-
-  //insertar fecha de mensaje
-  var message_date="2016-06-22T14:47:29.689358";
-  $scope.time =  new Date(message_date);
-
 
 
 })
@@ -842,14 +814,8 @@ angular.module('app.controllers', [])
 
 })
 .controller('personalConversationCtrl', function($scope,$state,$firebaseArray,$ionicScrollDelegate,$ionicHistory,Ref,userId,$ionicPopover) {
+   
 
-   $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
-
-
-
-  // ERRROR nombre con quien hablo
   $scope.user = userId.data;
   $scope.photo = userId.photo;
 
@@ -858,8 +824,6 @@ angular.module('app.controllers', [])
   var contact_mess_id = $state.params.contact_mess_id;
   var contact_id = $state.params.contact_id;
 
-  //var users_ref = new Firebase("https://radiant-fire-9029.firebaseio.com/usersTest");
-  //var users_ref = Ref.child('usersTest');
   console.log('personalConversationCtrl');
   console.log('my id: ',userId.id);
   console.log('contact id: ',contact_id);
@@ -870,9 +834,18 @@ angular.module('app.controllers', [])
 
   var conver_ref = Ref.child('conversationsTest/'+ conver_id);
   var my_ref = Ref.child('usersTest/'+userId.id+'/last_messages/'+my_mess_id);
-  var contact_ref = Ref.child('usersTest/'+contact_id+'/last_messages/'+contact_mess_id);
+  var contactRef = Ref.child('usersTest/'+contact_id);
+  //var contact_ref = Ref.child('usersTest/'+contact_id+'/last_messages/'+contact_mess_id);
+  var contact_ref = contactRef.child('last_messages/'+contact_mess_id);
 
+  my_ref.update({in:true,count:0});
   $scope.messages = $firebaseArray(conver_ref);
+
+  $scope.myGoBack = function() {
+    my_ref.update({in:false,count:0});
+    $ionicHistory.goBack();
+  };
+
 
   $scope.sendMessage = function(){
 
@@ -890,13 +863,38 @@ angular.module('app.controllers', [])
     my_ref.update({
           content:$scope.message,
           sendAt: new Date(),
-          seen:false
+          seen:true
     });
 
     contact_ref.update({
           content:$scope.message,
-          sendAt: new Date(),
-          seen:false
+          sendAt: new Date()
+    });
+
+    contact_ref.once('value',function(data){
+      user_in = data.val().in;
+      user_count = data.val().count;
+      console.log("Is user in: ",user_in);
+      console.log("Number of messages: ",user_count);
+      if(user_in==true)
+      {
+        console.log("Check true");
+        //contact_ref.update({seen:true,count:0});
+        contact_ref.update({seen:true});
+      }
+      else{
+        console.log("Check false");
+        if(user_count==0){
+
+          contactRef.once('value',function(data1){
+            tmp_count=data1.val().messages;
+            contactRef.update({messages:tmp_count+1});
+            console.log("Sending message...");
+          });
+
+        }
+        contact_ref.update({count:user_count+1,seen:false});
+      }
     });
 
     $scope.message = '';
@@ -907,6 +905,8 @@ angular.module('app.controllers', [])
     if($scope.user.user_id != id){
 
       console.log(id);
+      //my_ref.update({in:false});
+      my_ref.update({in:false,count:0});
       $state.go('contactProfile',{
         contactId: id,
         contactName: name,

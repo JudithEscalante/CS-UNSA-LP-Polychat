@@ -1,4 +1,4 @@
-<ion-view cache-view="false" title="messages" >
+<ion-view  cache-view="false" title="messages">
 
 
 
@@ -10,9 +10,11 @@
                 <div class="message-header"><span class="bold">{{ mess.contact_name}}</span></div>
                 <div class="item-text-wrap message"> {{ mess.content}}</div>
                 <div class="message-detail">
-                    <span am-time-ago="time"></span><!--timer-->
+                    <span am-time-ago='mess.sendAt'></span><!--timer-->
+
                 </div>
-                <span class="badge badge-assertive">{{number_messages}}</span>
+                <span ng-if="mess.count!=0" class="badge badge-assertive">{{mess.count}}</span>
+
              </ion-item>
 
 
@@ -21,17 +23,13 @@
                 <div class="message-header"><span class="bold">{{ mess.contact_name}}</span></div>
                 <div class="item-text-wrap message"> {{ mess.content}}</div>
                 <div class="message-detail">
-                    <span am-time-ago="time"></span><!--timer-->
+                    <span am-time-ago='mess.sendAt'></span><!--timer-->
                 </div>
-                <span class="badge badge-assertive">{{number_messages}}</span>
+                <!-- <span ng-if="mess.count!=0" class="badge badge-assertive">{{mess.count}}</span> -->
              </ion-item>
 
 
         </div>
     </ion-content>
-
-
-
-
 
 </ion-view>
