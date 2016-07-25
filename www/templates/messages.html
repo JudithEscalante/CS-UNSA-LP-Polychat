@@ -7,15 +7,23 @@
 
              <ion-item ng-if="mess.seen==false" class="item item-avatar"style="background-color: #B2BBEC;">
                 <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src={{mess.photo}} >
-                <div class="message-detail"><span class="bold">{{ mess.contact_name}}</span></div>
+                <div class="message-header"><span class="bold">{{ mess.contact_name}}</span></div>
                 <div class="item-text-wrap message"> {{ mess.content}}</div>
+                <div class="message-detail">
+                    <span am-time-ago="time"></span><!--timer-->
+                </div>
+                <span class="badge badge-assertive">{{number_messages}}</span>
              </ion-item>
 
 
              <ion-item ng-if="mess.seen==true" class="item item-avatar">
                 <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src={{mess.photo}} >
-                <div class="message-detail"><span class="bold">{{ mess.contact_name}}</span></div>
+                <div class="message-header"><span class="bold">{{ mess.contact_name}}</span></div>
                 <div class="item-text-wrap message"> {{ mess.content}}</div>
+                <div class="message-detail">
+                    <span am-time-ago="time"></span><!--timer-->
+                </div>
+                <span class="badge badge-assertive">{{number_messages}}</span>
              </ion-item>
 
 

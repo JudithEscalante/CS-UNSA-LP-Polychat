@@ -3,8 +3,9 @@
           <!-- view-title="<div class=' icon ion-chatbubble  user-messages-top-icon
                       msg-header-username' > Welcome {{user.name}} </div>"> -->
 
-    <ion-content has-bouncing="true" class="has-header has-footer"
-         delegate-handle="userMessageScroll">
+
+    <ion-content id="bottom" has-bouncing="true" class="has-header has-footer"
+         delegate-handle="userMessageScroll" padding="true">
            <div ng-repeat="message in messages" class="message-wrapper">
 
               <!--   CHAT LEFT - Receiver - otros-->
@@ -12,11 +13,10 @@
                   <img class="pic-message-global left" ng-click="goChat(message.user_id,message.user_name,message.user_photo)"
                         src={{message.user_photo}} />
                     <div class="chat-bubble left">
-                        <span class="bold">{{message.user_name}}<span class="flag-icon flag-icon-{{message.country}} "></span></span>
+                        <span class="message-header bold">{{message.user_name}}<span class="flag-icon flag-icon-{{message.country}} "></span></span>
                         <div class="message"> {{message.content}}</div>
                         <div class="message-detail">
-                            <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
-                            <span am-time-ago="time"></span>-->
+                            <span am-time-ago="time"></span>
                         </div>
                     </div>
                </ion-item>
@@ -27,13 +27,16 @@
                    <img class="pic-message-global right" ng-click="goChat(message.user_id,message.user_name)"
                          src={{photo}} />
                     <div class="chat-bubble right">
-                      <span class="bold">{{message.user_name}}<span class="flag-icon flag-icon-{{message.country}} "></span></span>
+                      <span class="message-header bold">{{message.user_name}}<span class="flag-icon flag-icon-{{message.country}} "></span></span>
                         <div class="message">{{message.content}}</div>
-                        <div class="message-detail"></div>
+                        <div class="message-detail">
+                            <span am-time-ago="time"></span>
+                        </div>
                     </div>
              </ion-item>
                <!--end CHAT RIGHT - Sender - yo-->
            </div>
+           <div id="start"></div>
     </ion-content>
 
 

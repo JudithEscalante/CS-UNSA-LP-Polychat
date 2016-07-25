@@ -9,6 +9,10 @@ angular.module('app.controllers', [])
       $state.go(ref);
       $scope.notification[tab]=0;
     };
+
+
+
+
 })
 
 
@@ -44,6 +48,13 @@ angular.module('app.controllers', [])
   };
 
 
+  //insertar fecha de mensaje
+  var message_date="2016-06-22T14:47:29.689358";
+  $scope.time =  new Date(message_date);
+
+  //colocar numero de notificaciones entre comillas 0='', 1='1', 2='2',etc.
+  $scope.number_messages='2';
+
 })
 
 .controller('contactsCtrl', function($scope,$state, $ionicHistory,Ref,userId,$firebaseArray) {
@@ -69,6 +80,31 @@ angular.module('app.controllers', [])
       });
     }
     };
+
+
+
+    /*
+    $scope.data = {
+    showDelete: false
+    };
+
+    $scope.friendslist = mydatabaseService.database();
+
+    $scope.deleteFriendButton = function(friend){
+
+    $scope.friendslist.splice($scope.friendslist.indexOf(friend), 1);
+    console.log("te borre XD!");
+    };
+
+    $scope.editFriendButton = function(item){
+
+    };
+
+    $scope.sendMessage = function(objFriend){
+    $state.go('conversation',{'contact_id': objFriend.id_user });
+    console.log("contacto enviado");
+    };*/
+
 
 })
 
@@ -488,10 +524,11 @@ angular.module('app.controllers', [])
 
 
 
-.controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
+.controller('chatRoomCtrl', function($scope,$timeout,$interval,$ionicLoading ,$ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray) {
 
-  //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
-  //$ionicScrollDelegate.scrollBottom();
+
+
+
   $scope.user = userId.data;
   $scope.photo = userId.photo;
   var chatRef = Ref.child('chatTest');
@@ -590,48 +627,40 @@ angular.module('app.controllers', [])
 
     }
 
+
   };
 
 
-  ////////////////////////////////////////////////////////////////
-  /*
-  $scope.clearDefault = function(a){
-      if(a.defaultValue==a.value)
-          {a.value=""}
+
+  var init=function(){
+     alert("aa");
+     $ionicScrollDelegate.scrollBottom();
+  }
+  //init();
+
+  $scope.scrollBottom = function() {
+    $ionicScrollDelegate.$getByHandle('userMessageScroll').scrollBottom();
   };
-  */
-
-    /* variables AngularTimeAgo */
-    //$scope.time = new Date();
-    /* end variables AngularTimeAgo */
-    /*
-    $scope.allmessage=mydatabaseService.database();
-
-    $scope.user=userPrincipal;
-
-    $scope.addMessage=function(){
-      //console.log($scope.messageInput);
-      //$scope.user.body=$scope.messageInput;
-      //console.log(userPrincipal.body);
-      // $scope.allmessage.push($scope.user);
-      $scope.allmessage.push( { id_user: '3',
-                                    body:$scope.messageInput,
-                                    name:'felpon',
-                                    date:'01-01-01',
-                                    img:'img/homero.jpg',
-                                    country: 'constantinopla',
-                                    city: 'los olvidados'});
-      $scope.messageInput='';
-      $ionicScrollDelegate.scrollBottom(true);
-      console.log("mensaje enviado");
-    };
 
 
-    $scope.sendMessage=function(obj){
-      $state.go('conversation',{'contact_id': obj.id_user });
-      console.log("contacto enviado");
+  $timeout(function() {
+     var x=$ionicScrollDelegate.$getByHandle('userMessageScroll');
+     console.log("beba");
+     x.scrollBottom();
+   }, 0);
 
-    };*/
+
+
+
+    $timeout(function() {
+    $scope.MyCtrl.showContent = true;
+    scrollDelegate = $ionicScrollDelegate.$getByHandle('userMessageScroll').scrollBottom();
+      }, 100);
+
+
+  //insertar fecha de mensaje
+  var message_date="2016-06-22T14:47:29.689358";
+  $scope.time =  new Date(message_date);
 
 
 
@@ -813,6 +842,7 @@ angular.module('app.controllers', [])
 
 })
 .controller('personalConversationCtrl', function($scope,$state,$firebaseArray,$ionicScrollDelegate,$ionicHistory,Ref,userId,$ionicPopover) {
+
    $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };

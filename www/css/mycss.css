@@ -34,6 +34,14 @@ $dark:                            #444 !default;
    font-size: 35px; /*tamaño estrellas*/
  }
 
+.ionic_ratings2 .icon {
+    font-size: 25px; /*tamaño estrellas*/
+    width: 26px;
+    /*position: relative;*/
+  }
+
+
+
  .buttonCenter{
      /*text-align: center;*/
 
@@ -319,9 +327,13 @@ img.pic-message-global.right {
   font-size: 14px;
 }
 
-.message-detail {
+.message-header {
   /*white-space: nowrap;*/
   font-size: 14px;
+}
+.message-detail {
+  /*white-space: nowrap;*/
+  font-size: 10px;
 }
 
 .bar.item-input-inset .item-input-wrapper input {
