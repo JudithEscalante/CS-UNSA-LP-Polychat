@@ -33,7 +33,6 @@
                  </div>
             </ion-item>
 
-
             <!--end CHAT LEFT - Receiver - otros-->
 
 
@@ -41,11 +40,11 @@
             <ion-item class="item item-avatar-right" ng-if="message.userName == user.name">
                 <!-- <img class="pic-message-personal right" ng-click="goProfile(message.userId,message.userName)"
                      src={{photo}} /> -->
-                 <div class="chat-bubble right">
+                 <div class="chat-bubble-me right-me">
                     <!-- <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span> -->
                      <div class="message">{{message.content}}</div>
-                     <div class="message-detail">
-                       <div class="ion-checkmark">visto</div>
+                     <div class="message-detail-check ">
+                       <div class="ion-checkmark"></div>
                      </div>
                  </ion-item>
             </div>

@@ -17,14 +17,14 @@
           <ion-item>
             <label class="item item-input">
               <i class="icon ion-search placeholder-icon"></i>
-              <input type="text" ng-model="searchFilter" placeholder="Buscar entre mis amigos">
+              <input type="text" ng-model="searchContacts" placeholder="Buscar entre mis amigos">
             </label>
           </ion-item>
           <!--end find -->
 
 
             <!--item avatar-->
-            <ion-item ng-repeat="friend in friendsList | filter:searchFilter" friend="friend"
+            <ion-item ng-repeat="friend in friendsList | filter:searchContacts" friend="friend"
                       class="item item-avatar item-remove-animate item-button-right"
                       ng-click="goProfile(friend.contact_id, friend.contact_name, friend.contact_photo)">
 
