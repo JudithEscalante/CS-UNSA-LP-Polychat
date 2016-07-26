@@ -46,14 +46,13 @@
     <input type="text" ng-model="country">
     </label>
 
-    <div class="item item-divider">Lenguajes nativos</div>
+    <div class="item item-divider">Lenguajes que domina</div>
     <!--<a class="item">Español</a>-->
-    <a class="item" ng-repeat="lan in nat_lan">{{ lan }}</a>
+    <a class="item" ng-repeat="lan in nat_lan">{{ lan.country }}</a>
     <div class="item item-divider">Lenguajes de interés</div>
     <!--<a class="item">Inglés</a>-->
-    <a class="item" ng-repeat="lan in obj_lan">{{ lan }}</a>
+    <a class="item" ng-repeat="lan in obj_lan">{{ lan.country }}</a>
 
-    <div class="item item-divider">Configuraciones</div>
     <!--<a class="item">Inglés</a>-->
     <!-- <div  class=" button-bar" style="width: 285px;"> -->
     <div  class=" button-bar" >

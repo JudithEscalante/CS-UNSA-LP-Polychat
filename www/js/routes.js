@@ -172,7 +172,8 @@ angular.module('app.routes', [])
       conver_id : null,
       my_mess_id: null,
       contact_mess_id: null,
-      contact_id: null
+      contact_id: null,
+      contact_name:null
     }
 })
   .state('ratingModalShow', {

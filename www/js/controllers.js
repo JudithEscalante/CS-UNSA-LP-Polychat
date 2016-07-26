@@ -35,7 +35,7 @@ angular.module('app.controllers', [])
 
   //Go to contact controller
 
-  $scope.goChatWith = function(converId,m1_id,m2_id,contactId){
+  $scope.goChatWith = function(converId,m1_id,m2_id,contactId,contactName){
 
     console.log("Message controller...");
     console.log("Conversation id: "+converId);
@@ -46,13 +46,14 @@ angular.module('app.controllers', [])
     var change_ref = Ref.child('usersTest/'+userId.id+'/last_messages/'+contactId);
 
     change_ref.update({seen:true});
-
+    console.log('contact name: ',contactName);
 
     $state.go('personalConversation',{
       conver_id : converId,
       my_mess_id: m1_id,
       contact_mess_id: m2_id,
-      contact_id: contactId
+      contact_id: contactId,
+      contact_name:contactName
     });
 
   };
@@ -353,21 +354,29 @@ angular.module('app.controllers', [])
 
 .controller('extraDataCtrl', function($scope,$state,userId,Ref) {
   $scope.data = {};
-  //$scope.data.country = "Afganistán";
-  $scope.natLan = [
-  {text:"Español",checked:false},
-  {text:"Inglés",checked:false},
-  {text:"Portugués",checked:false},
-  {text:"Francés",checked:false},
-  {text:"Alemán",checked:false}
-  ];
-
+   /*
   $scope.objLan = [
   {text:"Español",checked:false},
   {text:"Inglés",checked:false},
   {text:"Portugués",checked:false},
   {text:"Francés",checked:false},
   {text:"Alemán",checked:false}
+  ];*/
+  $scope.natLan = [
+  {text:"Español",code:'es',checked:false},
+  {text:"Inglés",code:'us',checked:false},
+  {text:"Portugués",code:'br',checked:false},
+  {text:"Francés",code:'fr',checked:false},
+  {text:"Alemán",code:'de',checked:false}
+  ];
+
+
+  $scope.objLan = [
+  {text:"Español",code:'es',checked:false},
+  {text:"Inglés",code:'us',checked:false},
+  {text:"Portugués",code:'br',checked:false},
+  {text:"Francés",code:'fr',checked:false},
+  {text:"Alemán",code:'de',checked:false}
   ];
 
   $scope.data.nat = [];
@@ -382,7 +391,11 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].text);
+        //$scope.data.nat.push($scope.natLan[i].text);
+        $scope.data.nat.push({
+          country:$scope.natLan[i].text,
+          code:$scope.natLan[i].code
+        });
       }
     }
 
@@ -391,7 +404,11 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text);
+      //$scope.data.obj.push($scope.objLan[i].text);
+      $scope.data.obj.push({
+        country:$scope.objLan[i].text,
+        code:$scope.objLan[i].code
+      });
 
     }
     }
@@ -412,19 +429,20 @@ angular.module('app.controllers', [])
   $scope.data = {};
   //$scope.data.country = "Afganistán";
   $scope.natLan = [
-  {text:"Español",checked:false},
-  {text:"Inglés",checked:false},
-  {text:"Portugués",checked:false},
-  {text:"Francés",checked:false},
-  {text:"Alemán",checked:false}
+  {text:"Español",code:'es',checked:false},
+  {text:"Inglés",code:'us',checked:false},
+  {text:"Portugués",code:'br',checked:false},
+  {text:"Francés",code:'fr',checked:false},
+  {text:"Alemán",code:'de',checked:false}
   ];
 
+
   $scope.objLan = [
-  {text:"Español",checked:false},
-  {text:"Inglés",checked:false},
-  {text:"Portugués",checked:false},
-  {text:"Francés",checked:false},
-  {text:"Alemán",checked:false}
+  {text:"Español",code:'es',checked:false},
+  {text:"Inglés",code:'us',checked:false},
+  {text:"Portugués",code:'br',checked:false},
+  {text:"Francés",code:'fr',checked:false},
+  {text:"Alemán",code:'de',checked:false}
   ];
 
   $scope.data.nat = [];
@@ -439,7 +457,11 @@ angular.module('app.controllers', [])
     for(i=0;i<$scope.natLan.length;i++){
       if($scope.natLan[i].checked)
       {
-        $scope.data.nat.push($scope.natLan[i].text);
+        //$scope.data.nat.push($scope.natLan[i].text);
+         $scope.data.nat.push({
+          country:$scope.natLan[i].text,
+          code:$scope.natLan[i].code
+        });
       }
     }
 
@@ -448,7 +470,11 @@ angular.module('app.controllers', [])
 
     if($scope.objLan[i].checked)
     {
-      $scope.data.obj.push($scope.objLan[i].text);
+      //$scope.data.obj.push($scope.objLan[i].text);
+      $scope.data.obj.push({
+        country:$scope.objLan[i].text,
+        code:$scope.objLan[i].code
+      });
 
     }
     }
@@ -480,19 +506,9 @@ angular.module('app.controllers', [])
   var user_not_ref = Ref.child('usersTest/'+userId.id+'/notifications');
   $scope.strangersList = $firebaseArray(user_not_ref);
 
-
-
-    var user_all = Ref.child('usersTest/');
-    $scope.user_all = $firebaseArray(user_all);
-    $scope.user_all_temp={};
-
-    for (var i = 0; i < $scope.user_all.length; i++){
-        var obj = $scope.user_all[i];
-
-    }
-
-
-
+  //var my_ref_contacts = Ref.child('usersTest/'+curr.user_id+'/contacts/'+contactId);
+  //var contact_ref_contacts = Ref.child('usersTest/'+contactId+'/contacts/'+curr.user_id);
+  //var my_ref_not = Ref.child('usersTest/'+curr.user_id+'/notifications/'+contactId);
 
   $scope.confirm = function(id,name,photo){
 
@@ -520,26 +536,12 @@ angular.module('app.controllers', [])
     my_ref_not.set(null);
   };
 
-
-
-
-
 })
 
 
 
 .controller('chatRoomCtrl', function($scope, $ionicScrollDelegate,$state, mydatabaseService, userPrincipal,userId,Ref,$firebaseArray,
   $timeout) {
-
-  //var ref = new Firebase("https://radiant-fire-9029.firebaseio.com");
-  //$ionicScrollDelegate.scrollBottom();
-
-  /*$scope.$on('$ionicView.afterEnter', function (viewInfo, state) {
-        //console.log('CTRL - $ionicView.loaded', viewInfo, state);
-        //console.log("Page done loading...");
-        $ionicScrollDelegate.scrollBottom();
-
-  });*/
 
   $timeout(function() {
     $ionicScrollDelegate.scrollBottom();
@@ -548,6 +550,7 @@ angular.module('app.controllers', [])
   $scope.user = userId.data;
   $scope.photo = userId.photo;
   var chatRef = Ref.child('chatTest');
+  //chatRef.set({last_user:'nouser'});
   var user_ref = Ref.child('usersTest');
 
   // $scope.country = "pe";
@@ -565,13 +568,44 @@ angular.module('app.controllers', [])
 
   $scope.pushMessage = function(){
 
-    console.log(userId.data.country);
+    //console.log(userId.data.country);
+    /*
     chatRef.push().set({
       user_name: userId.data.name,
       user_id: userId.data.user_id,
-      country: userId.data.country.toLowerCase(),
+      languages: userId.data.nat,
       content: $scope.message,
       user_photo : $scope.photo
+    });*/
+
+    chatRef.once('value',function(data){
+      last = data.val().last_user;
+      //console.log('last_user: ',last);
+      if(last==userId.id){
+        chatRef.push().set({
+          user_name: userId.data.name,
+          user_id: userId.data.user_id,
+          languages: userId.data.nat,
+          content: $scope.message,
+          user_photo : $scope.photo,
+          show:false
+        });
+        console.log('last message was mine....');
+
+      }
+      else{
+        chatRef.update({last_user:userId.id});
+        chatRef.push().set({
+          user_name: userId.data.name,
+          user_id: userId.data.user_id,
+          languages: userId.data.nat,
+          content: $scope.message,
+          user_photo : $scope.photo,
+          show:true
+        });
+
+        console.log('last message was not mine....');
+      }
     });
 
     $scope.message = '';
@@ -598,13 +632,15 @@ angular.module('app.controllers', [])
           conver_id : existing_conver.conversationId,
           my_mess_id: existing_conver.messId1,
           contact_mess_id: existing_conver.messId2,
-          contact_id: existing_conver.contact_id
+          contact_id: existing_conver.contact_id,
+          contact_name:existing_conver.contact_name
           });
 
         }
         else{
           var contact_ref = Ref.child('usersTest/'+us_id+'/last_messages');
           var new_con_ref = new_con.push();
+          new_con_ref.set({last_user:'nouser'});
 
           //var myMessRef = my_ref.push();
           //var contactMessRef = contact_ref.push();
@@ -638,7 +674,8 @@ angular.module('app.controllers', [])
           conver_id : new_con_ref.key(),
           my_mess_id: myMessRef.key(),
           contact_mess_id: contactMessRef.key(),
-          contact_id: us_id
+          contact_id: us_id,
+          contact_name:us_name
           });
 
         }
@@ -714,7 +751,8 @@ angular.module('app.controllers', [])
           conver_id : existing_conver.conversationId,
           my_mess_id: existing_conver.messId1,
           contact_mess_id: existing_conver.messId2,
-          contact_id: existing_conver.contact_id
+          contact_id: existing_conver.contact_id,
+          contact_name:existing_conver.contact_name,
           });
 
         }
@@ -827,8 +865,12 @@ angular.module('app.controllers', [])
   };
 
 })
-.controller('personalConversationCtrl', function($scope,$state,$firebaseArray,$ionicScrollDelegate,$ionicHistory,Ref,userId,$ionicPopover) {
+.controller('personalConversationCtrl', function($scope,$state,$firebaseArray,$ionicScrollDelegate,$ionicHistory,Ref,userId,$ionicPopover,
+  $timeout) {
 
+  $timeout(function() {
+    $ionicScrollDelegate.scrollBottom();
+  });
 
   $scope.user = userId.data;
   $scope.photo = userId.photo;
@@ -837,14 +879,16 @@ angular.module('app.controllers', [])
   var my_mess_id = $state.params.my_mess_id;
   var contact_mess_id = $state.params.contact_mess_id;
   var contact_id = $state.params.contact_id;
-
+  $scope.contact = $state.params.contact_name;
+/*
   console.log('personalConversationCtrl');
   console.log('my id: ',userId.id);
   console.log('contact id: ',contact_id);
+  console.log('contact name: ',$scope.contact);
 
   console.log('Conversation id: ',conver_id );
   console.log('my message id: ',my_mess_id);
-  console.log('contact message id: ',contact_mess_id);
+  console.log('contact message id: ',contact_mess_id);*/
 
   var conver_ref = Ref.child('conversationsTest/'+ conver_id);
   var my_ref = Ref.child('usersTest/'+userId.id+'/last_messages/'+my_mess_id);
@@ -854,6 +898,7 @@ angular.module('app.controllers', [])
 
   my_ref.update({in:true,count:0});
   $scope.messages = $firebaseArray(conver_ref);
+  $scope.check = false;
 
   $scope.myGoBack = function() {
     my_ref.update({in:false,count:0});
@@ -865,13 +910,43 @@ angular.module('app.controllers', [])
 
     $ionicScrollDelegate.scrollBottom();
 
+    /*
     conver_ref.push().set({
           userName: $scope.user.name,
           userId: $scope.user.user_id,
           content: $scope.message,
           userPhoto: $scope.photo,
-          country: $scope.user.country.toLowerCase()
+          country: $scope.user.country.toLowerCase(),
+          languages:$scope.user.nat
+    });*/
 
+    conver_ref.once('value',function(data){
+      last = data.val().last_user;
+      //console.log('last_user: ',last);
+      if(last==userId.id){
+        conver_ref.push().set({
+              userName: $scope.user.name,
+              userId: $scope.user.user_id,
+              content: $scope.message,
+              userPhoto: $scope.photo,
+              languages:$scope.user.nat,
+              show:false
+        });
+        console.log('last message was mine....');
+
+      }
+      else{
+        conver_ref.update({last_user:userId.id});
+        conver_ref.push().set({
+              userName: $scope.user.name,
+              userId: $scope.user.user_id,
+              content: $scope.message,
+              userPhoto: $scope.photo,
+              languages:$scope.user.nat,
+              show:true
+        });
+        console.log('last message was not mine....');
+      }
     });
 
     my_ref.update({
