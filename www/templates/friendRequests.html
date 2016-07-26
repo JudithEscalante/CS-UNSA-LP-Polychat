@@ -12,9 +12,9 @@
       <!--end find -->
 
       <!--    item divider Friend Request-->
-      <div class="item item-divider">
-                  Friend Request.
-      </div>
+              <div class="item item-divider">
+                          Friend Request.
+              </div>
       <ion-item class=" item item-avatar item-button-right" ng-repeat="stranger in strangersList | filter:inputfind.filterUser">
         <img src={{stranger.contact_photo}}>
         <h2>{{stranger.contact_name}}</h2>
@@ -27,10 +27,10 @@
       <!-- end item divider Friend Request-->
 
 
-      <!--  People you may know.
-      <div class="item item-divider">
-                  People you may know.
-      </div>
+      <!-- People you may know. -->
+              <div class="item item-divider">
+                          People you may know.
+              </div>
 
       <ion-item class="item item-avatar item-button-right" ng-repeat="friendRequest in friendRequestslist | filter:inputfind.filterUser">
           <img src={{friendRequest.img}}>
@@ -38,9 +38,10 @@
           <p>{{friendRequest.country}}, {{friendRequest.city}} </p>
           <button class="button button-positive icon ion-android-person-add" ng-click="addFriend()"></button>
 
-      </ion-item>-->
-
+      </ion-item>
       <!--  end People you may know-->
+
+
     </ion-list>
   </ion-conten>
 </ion-view>

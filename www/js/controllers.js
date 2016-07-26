@@ -480,9 +480,19 @@ angular.module('app.controllers', [])
   var user_not_ref = Ref.child('usersTest/'+userId.id+'/notifications');
   $scope.strangersList = $firebaseArray(user_not_ref);
 
-  //var my_ref_contacts = Ref.child('usersTest/'+curr.user_id+'/contacts/'+contactId);
-  //var contact_ref_contacts = Ref.child('usersTest/'+contactId+'/contacts/'+curr.user_id);
-  //var my_ref_not = Ref.child('usersTest/'+curr.user_id+'/notifications/'+contactId);
+
+
+    var user_all = Ref.child('usersTest/');
+    $scope.user_all = $firebaseArray(user_all);
+    $scope.user_all_temp={};
+
+    for (var i = 0; i < $scope.user_all.length; i++){
+        var obj = $scope.user_all[i];
+
+    }
+
+
+
 
   $scope.confirm = function(id,name,photo){
 
@@ -509,6 +519,10 @@ angular.module('app.controllers', [])
     var my_ref_not = Ref.child('usersTest/'+curr.user_id+'/notifications/'+id);
     my_ref_not.set(null);
   };
+
+
+
+
 
 })
 
@@ -814,7 +828,7 @@ angular.module('app.controllers', [])
 
 })
 .controller('personalConversationCtrl', function($scope,$state,$firebaseArray,$ionicScrollDelegate,$ionicHistory,Ref,userId,$ionicPopover) {
-   
+
 
   $scope.user = userId.data;
   $scope.photo = userId.photo;

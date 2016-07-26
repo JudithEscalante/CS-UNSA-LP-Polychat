@@ -16,12 +16,15 @@
 
     <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
        <div ng-repeat="message in messages" class="message-wrapper">
+
             <!--   CHAT LEFT - Receiver - otros-->
             <ion-item class="item item-avatar-left" ng-if="message.userName != user.name">
                <img class="pic-message-global left" ng-click="goProfile(message.userId,message.userName,message.userPhoto)"
                      src={{message.userPhoto}} />
                  <div class="chat-bubble left">
-                   <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
+                   <span class="bold">{{message.userName}}
+                     <!-- <span class="flag-icon flag-icon-{{message.country}}"></span> -->
+                   </span>
                      <div class="message"> {{message.content}}</div>
                      <div class="message-detail">
                          <!--<span ng-click="viewProfile(message)" class="bold">{{message.date}}</span>
@@ -33,21 +36,25 @@
 
             <!--end CHAT LEFT - Receiver - otros-->
 
+
             <!--   CHAT RIGHT - Sender - yo-->
             <ion-item class="item item-avatar-right" ng-if="message.userName == user.name">
-                <img class="pic-message-personal right" ng-click="goProfile(message.userId,message.userName)"
-                     src={{photo}} />
+                <!-- <img class="pic-message-personal right" ng-click="goProfile(message.userId,message.userName)"
+                     src={{photo}} /> -->
                  <div class="chat-bubble right">
-                    <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span>
+                    <!-- <span class="bold">{{message.userName}}<span class="flag-icon flag-icon-{{message.country}}"></span></span> -->
                      <div class="message">{{message.content}}</div>
                      <div class="message-detail">
-                       <div class="ion-checkmark-circled">visto</div>
+                       <div class="ion-checkmark">visto</div>
                      </div>
                  </ion-item>
             </div>
             <!--end CHAT RIGHT - Sender - yo-->
+
+
        </div>
     </ion-content>
+
 
     <!--button SEND-->
       <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">

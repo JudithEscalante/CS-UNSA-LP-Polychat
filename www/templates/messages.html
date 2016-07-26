@@ -18,8 +18,9 @@
              </ion-item>
 
 
-             <ion-item ng-if="mess.seen==true" class="item item-avatar">
-                <img ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)" src={{mess.photo}} >
+             <ion-item ng-click="goChatWith(mess.conversationId,mess.messId1,mess.messId2,mess.contact_id)"
+                       ng-if="mess.seen==true" class="item item-avatar">
+                <img  src={{mess.photo}} >
                 <div class="message-header"><span class="bold">{{ mess.contact_name}}</span></div>
                 <div class="item-text-wrap message"> {{ mess.content}}</div>
                 <div class="message-detail">

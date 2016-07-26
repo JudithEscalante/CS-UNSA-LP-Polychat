@@ -17,18 +17,19 @@
           <ion-item>
             <label class="item item-input">
               <i class="icon ion-search placeholder-icon"></i>
-              <input type="text" ng-model="inputfind.filterUser" placeholder="Buscar entre mis amigos">
+              <input type="text" ng-model="searchFilter" placeholder="Buscar entre mis amigos">
             </label>
           </ion-item>
           <!--end find -->
 
 
             <!--item avatar-->
-            <ion-item ng-repeat="friend in friendsList" friend="friend"
-                      class="item item-avatar item-remove-animate item-button-right">
+            <ion-item ng-repeat="friend in friendsList | filter:searchFilter" friend="friend"
+                      class="item item-avatar item-remove-animate item-button-right"
+                      ng-click="goProfile(friend.contact_id, friend.contact_name, friend.contact_photo)">
+
                   <img src={{friend.contact_photo}}>
                   <h2>{{friend.contact_name}}</h2>
-                  <!--<p>{{friend.country}}, {{friend.city}} </p>-->
                   <ion-delete-button class="ion-minus-circled"
                                      ng-click="deleteFriendButton(friend)"> </ion-delete-button>
                   <!--<button class="button button-positive icon ion-android-chat"
@@ -38,6 +39,7 @@
 
             </ion-item>
             <!--end item avatar-->
+
         </ion-list>
     </ion-content>
 
